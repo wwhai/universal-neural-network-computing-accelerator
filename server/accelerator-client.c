@@ -23,7 +23,7 @@ int main()
 
     // 序列化 Request
     size_t request_size = detection__request__get_packed_size(&request);
-    uint8_t *request_buffer = malloc(request_size);
+    uint8_t *request_buffer = (uint8_t *)malloc(request_size);
     detection__request__pack(&request, request_buffer);
 
     // 发送请求

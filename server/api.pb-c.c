@@ -7,367 +7,975 @@
 #endif
 
 #include "api.pb-c.h"
-void detection__request__init(Detection__Request *message)
+void   detection__request__init
+                     (Detection__Request         *message)
 {
   static const Detection__Request init_value = DETECTION__REQUEST__INIT;
   *message = init_value;
 }
-size_t detection__request__get_packed_size(const Detection__Request *message)
+size_t detection__request__get_packed_size
+                     (const Detection__Request *message)
 {
   assert(message->base.descriptor == &detection__request__descriptor);
-  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t detection__request__pack(const Detection__Request *message,
-                                uint8_t *out)
+size_t detection__request__pack
+                     (const Detection__Request *message,
+                      uint8_t       *out)
 {
   assert(message->base.descriptor == &detection__request__descriptor);
-  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t detection__request__pack_to_buffer(const Detection__Request *message,
-                                          ProtobufCBuffer *buffer)
+size_t detection__request__pack_to_buffer
+                     (const Detection__Request *message,
+                      ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &detection__request__descriptor);
-  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
 Detection__Request *
-detection__request__unpack(ProtobufCAllocator *allocator,
-                           size_t len,
-                           const uint8_t *data)
+       detection__request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
 {
   return (Detection__Request *)
-      protobuf_c_message_unpack(&detection__request__descriptor,
+     protobuf_c_message_unpack (&detection__request__descriptor,
                                 allocator, len, data);
 }
-void detection__request__free_unpacked(Detection__Request *message,
-                                       ProtobufCAllocator *allocator)
+void   detection__request__free_unpacked
+                     (Detection__Request *message,
+                      ProtobufCAllocator *allocator)
 {
-  if (!message)
+  if(!message)
     return;
   assert(message->base.descriptor == &detection__request__descriptor);
-  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void detection__box__init(Detection__Box *message)
+void   detection__box__init
+                     (Detection__Box         *message)
 {
   static const Detection__Box init_value = DETECTION__BOX__INIT;
   *message = init_value;
 }
-size_t detection__box__get_packed_size(const Detection__Box *message)
+size_t detection__box__get_packed_size
+                     (const Detection__Box *message)
 {
   assert(message->base.descriptor == &detection__box__descriptor);
-  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t detection__box__pack(const Detection__Box *message,
-                            uint8_t *out)
+size_t detection__box__pack
+                     (const Detection__Box *message,
+                      uint8_t       *out)
 {
   assert(message->base.descriptor == &detection__box__descriptor);
-  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t detection__box__pack_to_buffer(const Detection__Box *message,
-                                      ProtobufCBuffer *buffer)
+size_t detection__box__pack_to_buffer
+                     (const Detection__Box *message,
+                      ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &detection__box__descriptor);
-  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
 Detection__Box *
-detection__box__unpack(ProtobufCAllocator *allocator,
-                       size_t len,
-                       const uint8_t *data)
+       detection__box__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
 {
   return (Detection__Box *)
-      protobuf_c_message_unpack(&detection__box__descriptor,
+     protobuf_c_message_unpack (&detection__box__descriptor,
                                 allocator, len, data);
 }
-void detection__box__free_unpacked(Detection__Box *message,
-                                   ProtobufCAllocator *allocator)
+void   detection__box__free_unpacked
+                     (Detection__Box *message,
+                      ProtobufCAllocator *allocator)
 {
-  if (!message)
+  if(!message)
     return;
   assert(message->base.descriptor == &detection__box__descriptor);
-  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void detection__response__init(Detection__Response *message)
+void   detection__response__init
+                     (Detection__Response         *message)
 {
   static const Detection__Response init_value = DETECTION__RESPONSE__INIT;
   *message = init_value;
 }
-size_t detection__response__get_packed_size(const Detection__Response *message)
+size_t detection__response__get_packed_size
+                     (const Detection__Response *message)
 {
   assert(message->base.descriptor == &detection__response__descriptor);
-  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t detection__response__pack(const Detection__Response *message,
-                                 uint8_t *out)
+size_t detection__response__pack
+                     (const Detection__Response *message,
+                      uint8_t       *out)
 {
   assert(message->base.descriptor == &detection__response__descriptor);
-  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t detection__response__pack_to_buffer(const Detection__Response *message,
-                                           ProtobufCBuffer *buffer)
+size_t detection__response__pack_to_buffer
+                     (const Detection__Response *message,
+                      ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &detection__response__descriptor);
-  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
 Detection__Response *
-detection__response__unpack(ProtobufCAllocator *allocator,
-                            size_t len,
-                            const uint8_t *data)
+       detection__response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
 {
   return (Detection__Response *)
-      protobuf_c_message_unpack(&detection__response__descriptor,
+     protobuf_c_message_unpack (&detection__response__descriptor,
                                 allocator, len, data);
 }
-void detection__response__free_unpacked(Detection__Response *message,
-                                        ProtobufCAllocator *allocator)
+void   detection__response__free_unpacked
+                     (Detection__Response *message,
+                      ProtobufCAllocator *allocator)
 {
-  if (!message)
+  if(!message)
     return;
   assert(message->base.descriptor == &detection__response__descriptor);
-  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__auth_request__init
+                     (Detection__AuthRequest         *message)
+{
+  static const Detection__AuthRequest init_value = DETECTION__AUTH_REQUEST__INIT;
+  *message = init_value;
+}
+size_t detection__auth_request__get_packed_size
+                     (const Detection__AuthRequest *message)
+{
+  assert(message->base.descriptor == &detection__auth_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__auth_request__pack
+                     (const Detection__AuthRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__auth_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__auth_request__pack_to_buffer
+                     (const Detection__AuthRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__auth_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__AuthRequest *
+       detection__auth_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__AuthRequest *)
+     protobuf_c_message_unpack (&detection__auth_request__descriptor,
+                                allocator, len, data);
+}
+void   detection__auth_request__free_unpacked
+                     (Detection__AuthRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__auth_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__auth_response__init
+                     (Detection__AuthResponse         *message)
+{
+  static const Detection__AuthResponse init_value = DETECTION__AUTH_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t detection__auth_response__get_packed_size
+                     (const Detection__AuthResponse *message)
+{
+  assert(message->base.descriptor == &detection__auth_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__auth_response__pack
+                     (const Detection__AuthResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__auth_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__auth_response__pack_to_buffer
+                     (const Detection__AuthResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__auth_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__AuthResponse *
+       detection__auth_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__AuthResponse *)
+     protobuf_c_message_unpack (&detection__auth_response__descriptor,
+                                allocator, len, data);
+}
+void   detection__auth_response__free_unpacked
+                     (Detection__AuthResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__auth_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__ping_request__init
+                     (Detection__PingRequest         *message)
+{
+  static const Detection__PingRequest init_value = DETECTION__PING_REQUEST__INIT;
+  *message = init_value;
+}
+size_t detection__ping_request__get_packed_size
+                     (const Detection__PingRequest *message)
+{
+  assert(message->base.descriptor == &detection__ping_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__ping_request__pack
+                     (const Detection__PingRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__ping_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__ping_request__pack_to_buffer
+                     (const Detection__PingRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__ping_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__PingRequest *
+       detection__ping_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__PingRequest *)
+     protobuf_c_message_unpack (&detection__ping_request__descriptor,
+                                allocator, len, data);
+}
+void   detection__ping_request__free_unpacked
+                     (Detection__PingRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__ping_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__ping_response__init
+                     (Detection__PingResponse         *message)
+{
+  static const Detection__PingResponse init_value = DETECTION__PING_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t detection__ping_response__get_packed_size
+                     (const Detection__PingResponse *message)
+{
+  assert(message->base.descriptor == &detection__ping_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__ping_response__pack
+                     (const Detection__PingResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__ping_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__ping_response__pack_to_buffer
+                     (const Detection__PingResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__ping_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__PingResponse *
+       detection__ping_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__PingResponse *)
+     protobuf_c_message_unpack (&detection__ping_response__descriptor,
+                                allocator, len, data);
+}
+void   detection__ping_response__free_unpacked
+                     (Detection__PingResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__ping_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__get_accelerator_info_request__init
+                     (Detection__GetAcceleratorInfoRequest         *message)
+{
+  static const Detection__GetAcceleratorInfoRequest init_value = DETECTION__GET_ACCELERATOR_INFO_REQUEST__INIT;
+  *message = init_value;
+}
+size_t detection__get_accelerator_info_request__get_packed_size
+                     (const Detection__GetAcceleratorInfoRequest *message)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__get_accelerator_info_request__pack
+                     (const Detection__GetAcceleratorInfoRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__get_accelerator_info_request__pack_to_buffer
+                     (const Detection__GetAcceleratorInfoRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__GetAcceleratorInfoRequest *
+       detection__get_accelerator_info_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__GetAcceleratorInfoRequest *)
+     protobuf_c_message_unpack (&detection__get_accelerator_info_request__descriptor,
+                                allocator, len, data);
+}
+void   detection__get_accelerator_info_request__free_unpacked
+                     (Detection__GetAcceleratorInfoRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__get_accelerator_info_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   detection__get_accelerator_info_response__init
+                     (Detection__GetAcceleratorInfoResponse         *message)
+{
+  static const Detection__GetAcceleratorInfoResponse init_value = DETECTION__GET_ACCELERATOR_INFO_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t detection__get_accelerator_info_response__get_packed_size
+                     (const Detection__GetAcceleratorInfoResponse *message)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t detection__get_accelerator_info_response__pack
+                     (const Detection__GetAcceleratorInfoResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t detection__get_accelerator_info_response__pack_to_buffer
+                     (const Detection__GetAcceleratorInfoResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &detection__get_accelerator_info_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Detection__GetAcceleratorInfoResponse *
+       detection__get_accelerator_info_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Detection__GetAcceleratorInfoResponse *)
+     protobuf_c_message_unpack (&detection__get_accelerator_info_response__descriptor,
+                                allocator, len, data);
+}
+void   detection__get_accelerator_info_response__free_unpacked
+                     (Detection__GetAcceleratorInfoResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &detection__get_accelerator_info_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor detection__request__field_descriptors[3] =
-    {
-        {
-            "width",
-            1,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Request, width),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "height",
-            2,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Request, height),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "data",
-            3,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_BYTES,
-            0, /* quantifier_offset */
-            offsetof(Detection__Request, data),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
+{
+  {
+    "width",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Request, width),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "height",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Request, height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "data",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Request, data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned detection__request__field_indices_by_name[] = {
-    2, /* field[2] = data */
-    1, /* field[1] = height */
-    0, /* field[0] = width */
+  2,   /* field[2] = data */
+  1,   /* field[1] = height */
+  0,   /* field[0] = width */
 };
 static const ProtobufCIntRange detection__request__number_ranges[1 + 1] =
-    {
-        {1, 0},
-        {0, 3}};
+{
+  { 1, 0 },
+  { 0, 3 }
+};
 const ProtobufCMessageDescriptor detection__request__descriptor =
-    {
-        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-        "detection.Request",
-        "Request",
-        "Detection__Request",
-        "detection",
-        sizeof(Detection__Request),
-        3,
-        detection__request__field_descriptors,
-        detection__request__field_indices_by_name,
-        1, detection__request__number_ranges,
-        (ProtobufCMessageInit)detection__request__init,
-        NULL, NULL, NULL /* reserved[123] */
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.Request",
+  "Request",
+  "Detection__Request",
+  "detection",
+  sizeof(Detection__Request),
+  3,
+  detection__request__field_descriptors,
+  detection__request__field_indices_by_name,
+  1,  detection__request__number_ranges,
+  (ProtobufCMessageInit) detection__request__init,
+  NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor detection__box__field_descriptors[6] =
-    {
-        {
-            "x",
-            1,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, x),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "y",
-            2,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, y),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "width",
-            3,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, width),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "height",
-            4,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, height),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "confidence",
-            5,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_FLOAT,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, confidence),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "label",
-            6,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_STRING,
-            0, /* quantifier_offset */
-            offsetof(Detection__Box, label),
-            NULL,
-            &protobuf_c_empty_string,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
+{
+  {
+    "x",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, x),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "y",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, y),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "width",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, width),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "height",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, height),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "confidence",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, confidence),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "label",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Box, label),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned detection__box__field_indices_by_name[] = {
-    4, /* field[4] = confidence */
-    3, /* field[3] = height */
-    5, /* field[5] = label */
-    2, /* field[2] = width */
-    0, /* field[0] = x */
-    1, /* field[1] = y */
+  4,   /* field[4] = confidence */
+  3,   /* field[3] = height */
+  5,   /* field[5] = label */
+  2,   /* field[2] = width */
+  0,   /* field[0] = x */
+  1,   /* field[1] = y */
 };
 static const ProtobufCIntRange detection__box__number_ranges[1 + 1] =
-    {
-        {1, 0},
-        {0, 6}};
+{
+  { 1, 0 },
+  { 0, 6 }
+};
 const ProtobufCMessageDescriptor detection__box__descriptor =
-    {
-        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-        "detection.Box",
-        "Box",
-        "Detection__Box",
-        "detection",
-        sizeof(Detection__Box),
-        6,
-        detection__box__field_descriptors,
-        detection__box__field_indices_by_name,
-        1, detection__box__number_ranges,
-        (ProtobufCMessageInit)detection__box__init,
-        NULL, NULL, NULL /* reserved[123] */
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.Box",
+  "Box",
+  "Detection__Box",
+  "detection",
+  sizeof(Detection__Box),
+  6,
+  detection__box__field_descriptors,
+  detection__box__field_indices_by_name,
+  1,  detection__box__number_ranges,
+  (ProtobufCMessageInit) detection__box__init,
+  NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor detection__response__field_descriptors[2] =
-    {
-        {
-            "box_count",
-            1,
-            PROTOBUF_C_LABEL_NONE,
-            PROTOBUF_C_TYPE_INT32,
-            0, /* quantifier_offset */
-            offsetof(Detection__Response, box_count),
-            NULL,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
-        {
-            "boxes",
-            2,
-            PROTOBUF_C_LABEL_REPEATED,
-            PROTOBUF_C_TYPE_MESSAGE,
-            offsetof(Detection__Response, n_boxes),
-            offsetof(Detection__Response, boxes),
-            &detection__box__descriptor,
-            NULL,
-            0,            /* flags */
-            0, NULL, NULL /* reserved1,reserved2, etc */
-        },
+{
+  {
+    "box_count",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__Response, box_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "boxes",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Detection__Response, n_boxes),
+    offsetof(Detection__Response, boxes),
+    &detection__box__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned detection__response__field_indices_by_name[] = {
-    0, /* field[0] = box_count */
-    1, /* field[1] = boxes */
+  0,   /* field[0] = box_count */
+  1,   /* field[1] = boxes */
 };
 static const ProtobufCIntRange detection__response__number_ranges[1 + 1] =
-    {
-        {1, 0},
-        {0, 2}};
-const ProtobufCMessageDescriptor detection__response__descriptor =
-    {
-        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-        "detection.Response",
-        "Response",
-        "Detection__Response",
-        "detection",
-        sizeof(Detection__Response),
-        2,
-        detection__response__field_descriptors,
-        detection__response__field_indices_by_name,
-        1, detection__response__number_ranges,
-        (ProtobufCMessageInit)detection__response__init,
-        NULL, NULL, NULL /* reserved[123] */
+{
+  { 1, 0 },
+  { 0, 2 }
 };
-static const ProtobufCMethodDescriptor detection__detection_service__method_descriptors[1] =
-    {
-        {"Detect", &detection__request__descriptor, &detection__response__descriptor},
+const ProtobufCMessageDescriptor detection__response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.Response",
+  "Response",
+  "Detection__Response",
+  "detection",
+  sizeof(Detection__Response),
+  2,
+  detection__response__field_descriptors,
+  detection__response__field_indices_by_name,
+  1,  detection__response__number_ranges,
+  (ProtobufCMessageInit) detection__response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor detection__auth_request__field_descriptors[1] =
+{
+  {
+    "uuid",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__AuthRequest, uuid),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned detection__auth_request__field_indices_by_name[] = {
+  0,   /* field[0] = uuid */
+};
+static const ProtobufCIntRange detection__auth_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor detection__auth_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.AuthRequest",
+  "AuthRequest",
+  "Detection__AuthRequest",
+  "detection",
+  sizeof(Detection__AuthRequest),
+  1,
+  detection__auth_request__field_descriptors,
+  detection__auth_request__field_indices_by_name,
+  1,  detection__auth_request__number_ranges,
+  (ProtobufCMessageInit) detection__auth_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor detection__auth_response__field_descriptors[2] =
+{
+  {
+    "code",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__AuthResponse, code),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "uuid",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__AuthResponse, uuid),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned detection__auth_response__field_indices_by_name[] = {
+  0,   /* field[0] = code */
+  1,   /* field[1] = uuid */
+};
+static const ProtobufCIntRange detection__auth_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor detection__auth_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.AuthResponse",
+  "AuthResponse",
+  "Detection__AuthResponse",
+  "detection",
+  sizeof(Detection__AuthResponse),
+  2,
+  detection__auth_response__field_descriptors,
+  detection__auth_response__field_indices_by_name,
+  1,  detection__auth_response__number_ranges,
+  (ProtobufCMessageInit) detection__auth_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor detection__ping_request__field_descriptors[2] =
+{
+  {
+    "code",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__PingRequest, code),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "uuid",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__PingRequest, uuid),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned detection__ping_request__field_indices_by_name[] = {
+  0,   /* field[0] = code */
+  1,   /* field[1] = uuid */
+};
+static const ProtobufCIntRange detection__ping_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor detection__ping_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.PingRequest",
+  "PingRequest",
+  "Detection__PingRequest",
+  "detection",
+  sizeof(Detection__PingRequest),
+  2,
+  detection__ping_request__field_descriptors,
+  detection__ping_request__field_indices_by_name,
+  1,  detection__ping_request__number_ranges,
+  (ProtobufCMessageInit) detection__ping_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor detection__ping_response__field_descriptors[1] =
+{
+  {
+    "status",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Detection__PingResponse, status),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned detection__ping_response__field_indices_by_name[] = {
+  0,   /* field[0] = status */
+};
+static const ProtobufCIntRange detection__ping_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor detection__ping_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.PingResponse",
+  "PingResponse",
+  "Detection__PingResponse",
+  "detection",
+  sizeof(Detection__PingResponse),
+  1,
+  detection__ping_response__field_descriptors,
+  detection__ping_response__field_indices_by_name,
+  1,  detection__ping_response__number_ranges,
+  (ProtobufCMessageInit) detection__ping_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define detection__get_accelerator_info_request__field_descriptors NULL
+#define detection__get_accelerator_info_request__field_indices_by_name NULL
+#define detection__get_accelerator_info_request__number_ranges NULL
+const ProtobufCMessageDescriptor detection__get_accelerator_info_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.GetAcceleratorInfoRequest",
+  "GetAcceleratorInfoRequest",
+  "Detection__GetAcceleratorInfoRequest",
+  "detection",
+  sizeof(Detection__GetAcceleratorInfoRequest),
+  0,
+  detection__get_accelerator_info_request__field_descriptors,
+  detection__get_accelerator_info_request__field_indices_by_name,
+  0,  detection__get_accelerator_info_request__number_ranges,
+  (ProtobufCMessageInit) detection__get_accelerator_info_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor detection__get_accelerator_info_response__field_descriptors[5] =
+{
+  {
+    "version",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__GetAcceleratorInfoResponse, version),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vendor",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__GetAcceleratorInfoResponse, vendor),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "model",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__GetAcceleratorInfoResponse, model),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "name",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__GetAcceleratorInfoResponse, name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "uuid",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Detection__GetAcceleratorInfoResponse, uuid),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned detection__get_accelerator_info_response__field_indices_by_name[] = {
+  2,   /* field[2] = model */
+  3,   /* field[3] = name */
+  4,   /* field[4] = uuid */
+  1,   /* field[1] = vendor */
+  0,   /* field[0] = version */
+};
+static const ProtobufCIntRange detection__get_accelerator_info_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor detection__get_accelerator_info_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "detection.GetAcceleratorInfoResponse",
+  "GetAcceleratorInfoResponse",
+  "Detection__GetAcceleratorInfoResponse",
+  "detection",
+  sizeof(Detection__GetAcceleratorInfoResponse),
+  5,
+  detection__get_accelerator_info_response__field_descriptors,
+  detection__get_accelerator_info_response__field_indices_by_name,
+  1,  detection__get_accelerator_info_response__number_ranges,
+  (ProtobufCMessageInit) detection__get_accelerator_info_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor detection__detection_service__method_descriptors[4] =
+{
+  { "Auth", &detection__auth_request__descriptor, &detection__auth_response__descriptor },
+  { "Detect", &detection__request__descriptor, &detection__response__descriptor },
+  { "Ping", &detection__ping_request__descriptor, &detection__ping_response__descriptor },
+  { "GetAcceleratorInfo", &detection__get_accelerator_info_request__descriptor, &detection__get_accelerator_info_response__descriptor },
 };
 const unsigned detection__detection_service__method_indices_by_name[] = {
-    0 /* Detect */
+  0,        /* Auth */
+  1,        /* Detect */
+  3,        /* GetAcceleratorInfo */
+  2         /* Ping */
 };
 const ProtobufCServiceDescriptor detection__detection_service__descriptor =
-    {
-        PROTOBUF_C__SERVICE_DESCRIPTOR_MAGIC,
-        "detection.DetectionService",
-        "DetectionService",
-        "Detection__DetectionService",
-        "detection",
-        1,
-        detection__detection_service__method_descriptors,
-        detection__detection_service__method_indices_by_name};
+{
+  PROTOBUF_C__SERVICE_DESCRIPTOR_MAGIC,
+  "detection.DetectionService",
+  "DetectionService",
+  "Detection__DetectionService",
+  "detection",
+  4,
+  detection__detection_service__method_descriptors,
+  detection__detection_service__method_indices_by_name
+};
+void detection__detection_service__auth(ProtobufCService *service,
+                                        const Detection__AuthRequest *input,
+                                        Detection__AuthResponse_Closure closure,
+                                        void *closure_data)
+{
+  assert(service->descriptor == &detection__detection_service__descriptor);
+  service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void detection__detection_service__detect(ProtobufCService *service,
                                           const Detection__Request *input,
                                           Detection__Response_Closure closure,
                                           void *closure_data)
 {
   assert(service->descriptor == &detection__detection_service__descriptor);
-  service->invoke(service, 0, (const ProtobufCMessage *)input, (ProtobufCClosure)closure, closure_data);
+  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
-void detection__detection_service__init(Detection__DetectionService_Service *service,
-                                        Detection__DetectionService_ServiceDestroy destroy)
+void detection__detection_service__ping(ProtobufCService *service,
+                                        const Detection__PingRequest *input,
+                                        Detection__PingResponse_Closure closure,
+                                        void *closure_data)
 {
-  protobuf_c_service_generated_init(&service->base,
-                                    &detection__detection_service__descriptor,
-                                    (ProtobufCServiceDestroy)destroy);
+  assert(service->descriptor == &detection__detection_service__descriptor);
+  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void detection__detection_service__get_accelerator_info(ProtobufCService *service,
+                                                        const Detection__GetAcceleratorInfoRequest *input,
+                                                        Detection__GetAcceleratorInfoResponse_Closure closure,
+                                                        void *closure_data)
+{
+  assert(service->descriptor == &detection__detection_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void detection__detection_service__init (Detection__DetectionService_Service *service,
+                                         Detection__DetectionService_ServiceDestroy destroy)
+{
+  protobuf_c_service_generated_init (&service->base,
+                                     &detection__detection_service__descriptor,
+                                     (ProtobufCServiceDestroy) destroy);
 }

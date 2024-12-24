@@ -4,8 +4,8 @@ package detection;
 
 // 请求结构体定义
 message Request {
-    int32 width = 1;      // w
-    int32 height = 2;     // h
+    int32 width = 1;      // width
+    int32 height = 2;     // height
     bytes data = 3;       // 指向的数据（例如图像数据）
 }
 
@@ -25,7 +25,44 @@ message Response {
     repeated Box boxes = 2; // 检测到的框列表，最多 20 个
 }
 
+// 心跳包
+message AuthRequest {
+    string uuid = 1; // 设备唯一标识
+}
+// 心跳包返回
+message AuthResponse  {
+    int32 code = 1;  // 状态码
+    string uuid = 2; // 设备唯一标识
+}
+// 心跳包
+message PingRequest {
+    int32 code = 1;  // 状态码
+    string uuid = 2; // 设备唯一标识
+}
+// 心跳包返回
+message PingResponse  {
+    int32 status = 1; // 状态码
+}
+// 获取设备信息
+message GetAcceleratorInfoRequest {
+}
+// 获取设备信息返回
+message GetAcceleratorInfoResponse {
+    string version = 1;// 版本号
+    string vendor = 2; // 厂家
+    string model = 3;  // 型号
+    string name = 4;   // 名称
+    string uuid = 5;   // 设备唯一标识
+}
+
 // 定义服务接口
 service DetectionService {
+    // 认证接口
+    rpc Auth(AuthRequest) returns (AuthResponse);
+    // 检测接口
     rpc Detect(Request) returns (Response);
+    // 心跳接口
+    rpc Ping(PingRequest) returns (PingResponse);
+    // 获取设备信息
+    rpc GetAcceleratorInfo(GetAcceleratorInfoRequest) returns (GetAcceleratorInfoResponse);
 }

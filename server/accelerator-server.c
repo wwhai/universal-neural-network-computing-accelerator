@@ -8,7 +8,7 @@
 // 模拟服务端逻辑：处理 Request 并返回 Response
 Detection__Response *process_request(const Detection__Request *request)
 {
-    Detection__Response *response = malloc(sizeof(Detection__Response));
+    Detection__Response *response = (Detection__Response *)malloc(sizeof(Detection__Response));
     detection__response__init(response);
 
     // 假设检测到 2 个框
@@ -59,7 +59,7 @@ int main()
             continue;
         }
 
-        log_info("Received Request: width=%d, height=%d, data_len=%zu\n",
+        log_info("Received Request: width=%d, height=%d, data_len=%zu",
                  request->width, request->height, request->data.len);
 
         // 调用服务逻辑
@@ -67,7 +67,7 @@ int main()
 
         // 序列化 Response
         size_t response_size = detection__response__get_packed_size(response);
-        uint8_t *response_buffer = malloc(response_size);
+        uint8_t *response_buffer = (uint8_t *)malloc(response_size);
         detection__response__pack(response, response_buffer);
 
         // 发送响应
