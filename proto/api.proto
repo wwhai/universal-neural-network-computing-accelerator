@@ -8,7 +8,7 @@ package UNNCA;
 
 
 // 请求结构体定义
-message Request {
+message DetectRequest {
     int32 width = 1;      // width
     int32 height = 2;     // height
     bytes data = 3;       // 指向的数据（例如图像数据）
@@ -25,7 +25,7 @@ message Box {
 }
 
 // 返回结构体定义
-message Response {
+message DetectResponse {
     int32 box_count = 1;   // 检测到的框的数量
     repeated Box boxes = 2; // 检测到的框列表，最多 20 个
 }
@@ -49,10 +49,10 @@ message PingResponse  {
     int32 status = 1; // 状态码
 }
 // 获取设备信息
-message GetAcceleratorInfoRequest {
+message AcceleratorInfoRequest {
 }
 // 获取设备信息返回
-message GetAcceleratorInfoResponse {
+message AcceleratorInfoResponse {
     string version = 1;// 版本号
     string vendor = 2; // 厂家
     string model = 3;  // 型号
@@ -65,9 +65,9 @@ service DetectionService {
     // 认证接口
     rpc Auth(AuthRequest) returns (AuthResponse);
     // 检测接口
-    rpc Detect(Request) returns (Response);
+    rpc Detect(DetectRequest) returns (DetectResponse);
     // 心跳接口
     rpc Ping(PingRequest) returns (PingResponse);
     // 获取设备信息
-    rpc GetAcceleratorInfo(GetAcceleratorInfoRequest) returns (GetAcceleratorInfoResponse);
+    rpc AcceleratorInfo(AcceleratorInfoRequest) returns (AcceleratorInfoResponse);
 }

@@ -15,15 +15,15 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 
-typedef struct _UNNCA__Request UNNCA__Request;
+typedef struct _UNNCA__DetectRequest UNNCA__DetectRequest;
 typedef struct _UNNCA__Box UNNCA__Box;
-typedef struct _UNNCA__Response UNNCA__Response;
+typedef struct _UNNCA__DetectResponse UNNCA__DetectResponse;
 typedef struct _UNNCA__AuthRequest UNNCA__AuthRequest;
 typedef struct _UNNCA__AuthResponse UNNCA__AuthResponse;
 typedef struct _UNNCA__PingRequest UNNCA__PingRequest;
 typedef struct _UNNCA__PingResponse UNNCA__PingResponse;
-typedef struct _UNNCA__GetAcceleratorInfoRequest UNNCA__GetAcceleratorInfoRequest;
-typedef struct _UNNCA__GetAcceleratorInfoResponse UNNCA__GetAcceleratorInfoResponse;
+typedef struct _UNNCA__AcceleratorInfoRequest UNNCA__AcceleratorInfoRequest;
+typedef struct _UNNCA__AcceleratorInfoResponse UNNCA__AcceleratorInfoResponse;
 
 
 /* --- enums --- */
@@ -34,7 +34,7 @@ typedef struct _UNNCA__GetAcceleratorInfoResponse UNNCA__GetAcceleratorInfoRespo
 /*
  * 请求结构体定义
  */
-struct  _UNNCA__Request
+struct  _UNNCA__DetectRequest
 {
   ProtobufCMessage base;
   /*
@@ -50,8 +50,8 @@ struct  _UNNCA__Request
    */
   ProtobufCBinaryData data;
 };
-#define UNNCA__REQUEST__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&unnca__request__descriptor) \
+#define UNNCA__DETECT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&unnca__detect_request__descriptor) \
     , 0, 0, {0,NULL} }
 
 
@@ -94,7 +94,7 @@ struct  _UNNCA__Box
 /*
  * 返回结构体定义
  */
-struct  _UNNCA__Response
+struct  _UNNCA__DetectResponse
 {
   ProtobufCMessage base;
   /*
@@ -107,8 +107,8 @@ struct  _UNNCA__Response
   size_t n_boxes;
   UNNCA__Box **boxes;
 };
-#define UNNCA__RESPONSE__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&unnca__response__descriptor) \
+#define UNNCA__DETECT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&unnca__detect_response__descriptor) \
     , 0, 0,NULL }
 
 
@@ -187,19 +187,19 @@ struct  _UNNCA__PingResponse
 /*
  * 获取设备信息
  */
-struct  _UNNCA__GetAcceleratorInfoRequest
+struct  _UNNCA__AcceleratorInfoRequest
 {
   ProtobufCMessage base;
 };
-#define UNNCA__GET_ACCELERATOR_INFO_REQUEST__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&unnca__get_accelerator_info_request__descriptor) \
+#define UNNCA__ACCELERATOR_INFO_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&unnca__accelerator_info_request__descriptor) \
      }
 
 
 /*
  * 获取设备信息返回
  */
-struct  _UNNCA__GetAcceleratorInfoResponse
+struct  _UNNCA__AcceleratorInfoResponse
 {
   ProtobufCMessage base;
   /*
@@ -223,29 +223,29 @@ struct  _UNNCA__GetAcceleratorInfoResponse
    */
   char *uuid;
 };
-#define UNNCA__GET_ACCELERATOR_INFO_RESPONSE__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&unnca__get_accelerator_info_response__descriptor) \
+#define UNNCA__ACCELERATOR_INFO_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&unnca__accelerator_info_response__descriptor) \
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
-/* UNNCA__Request methods */
-void   unnca__request__init
-                     (UNNCA__Request         *message);
-size_t unnca__request__get_packed_size
-                     (const UNNCA__Request   *message);
-size_t unnca__request__pack
-                     (const UNNCA__Request   *message,
+/* UNNCA__DetectRequest methods */
+void   unnca__detect_request__init
+                     (UNNCA__DetectRequest         *message);
+size_t unnca__detect_request__get_packed_size
+                     (const UNNCA__DetectRequest   *message);
+size_t unnca__detect_request__pack
+                     (const UNNCA__DetectRequest   *message,
                       uint8_t             *out);
-size_t unnca__request__pack_to_buffer
-                     (const UNNCA__Request   *message,
+size_t unnca__detect_request__pack_to_buffer
+                     (const UNNCA__DetectRequest   *message,
                       ProtobufCBuffer     *buffer);
-UNNCA__Request *
-       unnca__request__unpack
+UNNCA__DetectRequest *
+       unnca__detect_request__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data);
-void   unnca__request__free_unpacked
-                     (UNNCA__Request *message,
+void   unnca__detect_request__free_unpacked
+                     (UNNCA__DetectRequest *message,
                       ProtobufCAllocator *allocator);
 /* UNNCA__Box methods */
 void   unnca__box__init
@@ -266,24 +266,24 @@ UNNCA__Box *
 void   unnca__box__free_unpacked
                      (UNNCA__Box *message,
                       ProtobufCAllocator *allocator);
-/* UNNCA__Response methods */
-void   unnca__response__init
-                     (UNNCA__Response         *message);
-size_t unnca__response__get_packed_size
-                     (const UNNCA__Response   *message);
-size_t unnca__response__pack
-                     (const UNNCA__Response   *message,
+/* UNNCA__DetectResponse methods */
+void   unnca__detect_response__init
+                     (UNNCA__DetectResponse         *message);
+size_t unnca__detect_response__get_packed_size
+                     (const UNNCA__DetectResponse   *message);
+size_t unnca__detect_response__pack
+                     (const UNNCA__DetectResponse   *message,
                       uint8_t             *out);
-size_t unnca__response__pack_to_buffer
-                     (const UNNCA__Response   *message,
+size_t unnca__detect_response__pack_to_buffer
+                     (const UNNCA__DetectResponse   *message,
                       ProtobufCBuffer     *buffer);
-UNNCA__Response *
-       unnca__response__unpack
+UNNCA__DetectResponse *
+       unnca__detect_response__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data);
-void   unnca__response__free_unpacked
-                     (UNNCA__Response *message,
+void   unnca__detect_response__free_unpacked
+                     (UNNCA__DetectResponse *message,
                       ProtobufCAllocator *allocator);
 /* UNNCA__AuthRequest methods */
 void   unnca__auth_request__init
@@ -361,54 +361,54 @@ UNNCA__PingResponse *
 void   unnca__ping_response__free_unpacked
                      (UNNCA__PingResponse *message,
                       ProtobufCAllocator *allocator);
-/* UNNCA__GetAcceleratorInfoRequest methods */
-void   unnca__get_accelerator_info_request__init
-                     (UNNCA__GetAcceleratorInfoRequest         *message);
-size_t unnca__get_accelerator_info_request__get_packed_size
-                     (const UNNCA__GetAcceleratorInfoRequest   *message);
-size_t unnca__get_accelerator_info_request__pack
-                     (const UNNCA__GetAcceleratorInfoRequest   *message,
+/* UNNCA__AcceleratorInfoRequest methods */
+void   unnca__accelerator_info_request__init
+                     (UNNCA__AcceleratorInfoRequest         *message);
+size_t unnca__accelerator_info_request__get_packed_size
+                     (const UNNCA__AcceleratorInfoRequest   *message);
+size_t unnca__accelerator_info_request__pack
+                     (const UNNCA__AcceleratorInfoRequest   *message,
                       uint8_t             *out);
-size_t unnca__get_accelerator_info_request__pack_to_buffer
-                     (const UNNCA__GetAcceleratorInfoRequest   *message,
+size_t unnca__accelerator_info_request__pack_to_buffer
+                     (const UNNCA__AcceleratorInfoRequest   *message,
                       ProtobufCBuffer     *buffer);
-UNNCA__GetAcceleratorInfoRequest *
-       unnca__get_accelerator_info_request__unpack
+UNNCA__AcceleratorInfoRequest *
+       unnca__accelerator_info_request__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data);
-void   unnca__get_accelerator_info_request__free_unpacked
-                     (UNNCA__GetAcceleratorInfoRequest *message,
+void   unnca__accelerator_info_request__free_unpacked
+                     (UNNCA__AcceleratorInfoRequest *message,
                       ProtobufCAllocator *allocator);
-/* UNNCA__GetAcceleratorInfoResponse methods */
-void   unnca__get_accelerator_info_response__init
-                     (UNNCA__GetAcceleratorInfoResponse         *message);
-size_t unnca__get_accelerator_info_response__get_packed_size
-                     (const UNNCA__GetAcceleratorInfoResponse   *message);
-size_t unnca__get_accelerator_info_response__pack
-                     (const UNNCA__GetAcceleratorInfoResponse   *message,
+/* UNNCA__AcceleratorInfoResponse methods */
+void   unnca__accelerator_info_response__init
+                     (UNNCA__AcceleratorInfoResponse         *message);
+size_t unnca__accelerator_info_response__get_packed_size
+                     (const UNNCA__AcceleratorInfoResponse   *message);
+size_t unnca__accelerator_info_response__pack
+                     (const UNNCA__AcceleratorInfoResponse   *message,
                       uint8_t             *out);
-size_t unnca__get_accelerator_info_response__pack_to_buffer
-                     (const UNNCA__GetAcceleratorInfoResponse   *message,
+size_t unnca__accelerator_info_response__pack_to_buffer
+                     (const UNNCA__AcceleratorInfoResponse   *message,
                       ProtobufCBuffer     *buffer);
-UNNCA__GetAcceleratorInfoResponse *
-       unnca__get_accelerator_info_response__unpack
+UNNCA__AcceleratorInfoResponse *
+       unnca__accelerator_info_response__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data);
-void   unnca__get_accelerator_info_response__free_unpacked
-                     (UNNCA__GetAcceleratorInfoResponse *message,
+void   unnca__accelerator_info_response__free_unpacked
+                     (UNNCA__AcceleratorInfoResponse *message,
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
-typedef void (*UNNCA__Request_Closure)
-                 (const UNNCA__Request *message,
+typedef void (*UNNCA__DetectRequest_Closure)
+                 (const UNNCA__DetectRequest *message,
                   void *closure_data);
 typedef void (*UNNCA__Box_Closure)
                  (const UNNCA__Box *message,
                   void *closure_data);
-typedef void (*UNNCA__Response_Closure)
-                 (const UNNCA__Response *message,
+typedef void (*UNNCA__DetectResponse_Closure)
+                 (const UNNCA__DetectResponse *message,
                   void *closure_data);
 typedef void (*UNNCA__AuthRequest_Closure)
                  (const UNNCA__AuthRequest *message,
@@ -422,11 +422,11 @@ typedef void (*UNNCA__PingRequest_Closure)
 typedef void (*UNNCA__PingResponse_Closure)
                  (const UNNCA__PingResponse *message,
                   void *closure_data);
-typedef void (*UNNCA__GetAcceleratorInfoRequest_Closure)
-                 (const UNNCA__GetAcceleratorInfoRequest *message,
+typedef void (*UNNCA__AcceleratorInfoRequest_Closure)
+                 (const UNNCA__AcceleratorInfoRequest *message,
                   void *closure_data);
-typedef void (*UNNCA__GetAcceleratorInfoResponse_Closure)
-                 (const UNNCA__GetAcceleratorInfoResponse *message,
+typedef void (*UNNCA__AcceleratorInfoResponse_Closure)
+                 (const UNNCA__AcceleratorInfoResponse *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -440,17 +440,17 @@ struct _UNNCA__DetectionService_Service
                UNNCA__AuthResponse_Closure closure,
                void *closure_data);
   void (*detect)(UNNCA__DetectionService_Service *service,
-                 const UNNCA__Request *input,
-                 UNNCA__Response_Closure closure,
+                 const UNNCA__DetectRequest *input,
+                 UNNCA__DetectResponse_Closure closure,
                  void *closure_data);
   void (*ping)(UNNCA__DetectionService_Service *service,
                const UNNCA__PingRequest *input,
                UNNCA__PingResponse_Closure closure,
                void *closure_data);
-  void (*get_accelerator_info)(UNNCA__DetectionService_Service *service,
-                               const UNNCA__GetAcceleratorInfoRequest *input,
-                               UNNCA__GetAcceleratorInfoResponse_Closure closure,
-                               void *closure_data);
+  void (*accelerator_info)(UNNCA__DetectionService_Service *service,
+                           const UNNCA__AcceleratorInfoRequest *input,
+                           UNNCA__AcceleratorInfoResponse_Closure closure,
+                           void *closure_data);
 };
 typedef void (*UNNCA__DetectionService_ServiceDestroy)(UNNCA__DetectionService_Service *);
 void unnca__detection_service__init (UNNCA__DetectionService_Service *service,
@@ -462,35 +462,35 @@ void unnca__detection_service__init (UNNCA__DetectionService_Service *service,
       function_prefix__ ## auth,\
       function_prefix__ ## detect,\
       function_prefix__ ## ping,\
-      function_prefix__ ## get_accelerator_info  }
+      function_prefix__ ## accelerator_info  }
 void unnca__detection_service__auth(ProtobufCService *service,
                                     const UNNCA__AuthRequest *input,
                                     UNNCA__AuthResponse_Closure closure,
                                     void *closure_data);
 void unnca__detection_service__detect(ProtobufCService *service,
-                                      const UNNCA__Request *input,
-                                      UNNCA__Response_Closure closure,
+                                      const UNNCA__DetectRequest *input,
+                                      UNNCA__DetectResponse_Closure closure,
                                       void *closure_data);
 void unnca__detection_service__ping(ProtobufCService *service,
                                     const UNNCA__PingRequest *input,
                                     UNNCA__PingResponse_Closure closure,
                                     void *closure_data);
-void unnca__detection_service__get_accelerator_info(ProtobufCService *service,
-                                                    const UNNCA__GetAcceleratorInfoRequest *input,
-                                                    UNNCA__GetAcceleratorInfoResponse_Closure closure,
-                                                    void *closure_data);
+void unnca__detection_service__accelerator_info(ProtobufCService *service,
+                                                const UNNCA__AcceleratorInfoRequest *input,
+                                                UNNCA__AcceleratorInfoResponse_Closure closure,
+                                                void *closure_data);
 
 /* --- descriptors --- */
 
-extern const ProtobufCMessageDescriptor unnca__request__descriptor;
+extern const ProtobufCMessageDescriptor unnca__detect_request__descriptor;
 extern const ProtobufCMessageDescriptor unnca__box__descriptor;
-extern const ProtobufCMessageDescriptor unnca__response__descriptor;
+extern const ProtobufCMessageDescriptor unnca__detect_response__descriptor;
 extern const ProtobufCMessageDescriptor unnca__auth_request__descriptor;
 extern const ProtobufCMessageDescriptor unnca__auth_response__descriptor;
 extern const ProtobufCMessageDescriptor unnca__ping_request__descriptor;
 extern const ProtobufCMessageDescriptor unnca__ping_response__descriptor;
-extern const ProtobufCMessageDescriptor unnca__get_accelerator_info_request__descriptor;
-extern const ProtobufCMessageDescriptor unnca__get_accelerator_info_response__descriptor;
+extern const ProtobufCMessageDescriptor unnca__accelerator_info_request__descriptor;
+extern const ProtobufCMessageDescriptor unnca__accelerator_info_response__descriptor;
 extern const ProtobufCServiceDescriptor unnca__detection_service__descriptor;
 
 PROTOBUF_C__END_DECLS

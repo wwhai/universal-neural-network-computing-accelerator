@@ -15,7 +15,7 @@ int main()
     printf("Client connected to tcp://localhost:5555\n");
 
     // 创建并初始化 Request 消息
-    UNNCA__Request request = UNNCA__REQUEST__INIT;
+    UNNCA__DetectRequest request = UNNCA__DETECT_REQUEST__INIT;
     request.width = 640;
     request.height = 480;
     const char *image_data = "example image data";
@@ -23,9 +23,9 @@ int main()
     request.data.len = strlen(image_data);
 
     // 序列化 Request
-    size_t request_size = unnca__request__get_packed_size(&request);
+    size_t request_size = unnca__detect_request__get_packed_size(&request);
     uint8_t *request_buffer = (uint8_t *)malloc(request_size);
-    unnca__request__pack(&request, request_buffer);
+    unnca__detect_request__pack(&request, request_buffer);
 
     // 发送请求
     zmq_send(socket, request_buffer, request_size, 0);
@@ -45,7 +45,7 @@ int main()
     }
 
     // 解析 Response
-    UNNCA__Response *response = unnca__response__unpack(NULL, bytes_received, response_buffer);
+    UNNCA__DetectResponse *response = unnca__detect_response__unpack(NULL, bytes_received, response_buffer);
     if (!response)
     {
         fprintf(stderr, "Failed to unpack response\n");
@@ -64,7 +64,7 @@ int main()
     }
 
     // 释放资源
-    unnca__response__free_unpacked(response, NULL);
+    unnca__detect_response__free_unpacked(response, NULL);
     free(request_buffer);
 
     // 关闭 ZMQ socket 和上下文
