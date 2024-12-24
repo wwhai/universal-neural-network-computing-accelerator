@@ -6,20 +6,20 @@
 #include "api.pb-c.h"
 
 // 模拟服务端逻辑：处理 Request 并返回 Response
-Detection__Response *process_request(const Detection__Request *request)
+UNNCA__Response *process_request(const UNNCA__Request *request)
 {
-    Detection__Response *response = (Detection__Response *)malloc(sizeof(Detection__Response));
-    detection__response__init(response);
+    UNNCA__Response *response = (UNNCA__Response *)malloc(sizeof(UNNCA__Response));
+    unnca__response__init(response);
 
     // 假设检测到 2 个框
     response->box_count = 2;
     response->n_boxes = 2;
-    response->boxes = (Detection__Box **)malloc(sizeof(Detection__Box *) * response->n_boxes);
+    response->boxes = (UNNCA__Box **)malloc(sizeof(UNNCA__Box *) * response->n_boxes);
 
     for (int i = 0; i < response->n_boxes; i++)
     {
-        response->boxes[i] = (Detection__Box *)malloc(sizeof(Detection__Box));
-        detection__box__init(response->boxes[i]);
+        response->boxes[i] = (UNNCA__Box *)malloc(sizeof(UNNCA__Box));
+        unnca__box__init(response->boxes[i]);
         response->boxes[i]->x = i * 10;
         response->boxes[i]->y = i * 20;
         response->boxes[i]->width = 50 + i * 10;
@@ -52,7 +52,7 @@ int main()
         }
 
         // 解析 Request
-        Detection__Request *request = detection__request__unpack(NULL, bytes_received, buffer);
+        UNNCA__Request *request = unnca__request__unpack(NULL, bytes_received, buffer);
         if (!request)
         {
             fprintf(stderr, "Failed to unpack request");
@@ -63,18 +63,18 @@ int main()
                  request->width, request->height, request->data.len);
 
         // 调用服务逻辑
-        Detection__Response *response = process_request(request);
+        UNNCA__Response *response = process_request(request);
 
         // 序列化 Response
-        size_t response_size = detection__response__get_packed_size(response);
+        size_t response_size = unnca__response__get_packed_size(response);
         uint8_t *response_buffer = (uint8_t *)malloc(response_size);
-        detection__response__pack(response, response_buffer);
+        unnca__response__pack(response, response_buffer);
 
         // 发送响应
         zmq_send(socket, response_buffer, response_size, 0);
 
         // 释放资源
-        detection__request__free_unpacked(request, NULL);
+        unnca__request__free_unpacked(request, NULL);
         free(response_buffer);
         for (size_t i = 0; i < response->n_boxes; i++)
         {

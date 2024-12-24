@@ -1,6 +1,11 @@
 syntax = "proto3";
 
-package detection;
+package UNNCA;
+
+// option python_package = "./hootrhino_unnca";
+// option java_package = "hootrhino.unnca";
+// option go_package = "./hootrhino_unnca";
+
 
 // 请求结构体定义
 message Request {
