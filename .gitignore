@@ -1,47 +1,32 @@
-# 编译目录
 /build/
-/server/build/
-/client/build/
+output/
 neural-accelerator-*
 *.pcap
-# 运行时文件
 *.o
 *.out
 *.exe
 
-# 中间文件
 CMakeCache.txt
 CMakeFiles/
 CMakeScripts/
 Makefile
 cmake_install.cmake
 
-# 依赖库和可执行文件
 lib/
 bin/
 
-# 日志文件
 *.log
 
-# 模型文件（如果不想将模型文件纳入版本控制）
-/models/*.weights
-/models/*.bin
-/models/*.onnx
 
-# 图像文件（如果不想将测试图像纳入版本控制）
-/images/*.jpg
-/images/*.png
-/images/*.bmp
+*.bin
 
-# 临时文件
+
 *.tmp
 *.bak
 
-# IDE 相关文件
 .idea/
 .vscode/
 .DS_Store
 
-# 其他临时文件
 *~
 \#*\#
