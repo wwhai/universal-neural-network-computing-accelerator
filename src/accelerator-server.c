@@ -4,36 +4,62 @@
 #include <string.h>
 #include "clog.h"
 #include "api.pb-c.h"
-
-// 模拟服务端逻辑：处理 Request 并返回 Response
-UNNCA__DetectResponse *process_request(const UNNCA__DetectRequest *request)
+// 处理认证请求的函数
+void handle_auth_request(void *socket, const UNNCA__AuthRequest *request)
 {
-    UNNCA__DetectResponse *response = (UNNCA__DetectResponse *)malloc(sizeof(UNNCA__DetectResponse));
-    unnca__detect_response__init(response);
+    UNNCA__AuthResponse auth_response = UNNCA__AUTH_RESPONSE__INIT;
+    auth_response.code = 0;
+    auth_response.msg = strdup("AUTH_SUCCESS");
+    UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
+    rpc_response.auth_response = &auth_response;
+    rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_AUTH_RESPONSE;
+    size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
+    uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
+    unnca__rpc_response__pack(&rpc_response, response_buffer);
+    zmq_send(socket, response_buffer, rpc_response_size, 0);
+    free(response_buffer);
+}
+// 模拟服务端逻辑：处理 Request 并返回 Response
+void process_request(void *socket, const UNNCA__DetectRequest *request)
+{
+    UNNCA__DetectResponse detect_response = UNNCA__DETECT_RESPONSE__INIT;
+    unnca__detect_response__init(&detect_response);
 
     // 假设检测到 2 个框
-    response->box_count = 2;
-    response->n_boxes = 2;
-    response->boxes = (UNNCA__Box **)malloc(sizeof(UNNCA__Box *) * response->n_boxes);
+    detect_response.box_count = 2;
+    detect_response.n_boxes = 2;
+    detect_response.boxes = (UNNCA__Box **)malloc(sizeof(UNNCA__Box *) * detect_response.n_boxes);
 
-    for (int i = 0; i < response->n_boxes; i++)
+    for (int i = 0; i < detect_response.n_boxes; i++)
     {
-        response->boxes[i] = (UNNCA__Box *)malloc(sizeof(UNNCA__Box));
-        unnca__box__init(response->boxes[i]);
-        response->boxes[i]->x = i * 10;
-        response->boxes[i]->y = i * 20;
-        response->boxes[i]->width = 50 + i * 10;
-        response->boxes[i]->height = 60 + i * 10;
-        response->boxes[i]->confidence = 0.9f - i * 0.1f;
-        response->boxes[i]->label = strdup(i == 0 ? "Car" : "Person");
+        detect_response.boxes[i] = (UNNCA__Box *)malloc(sizeof(UNNCA__Box));
+        unnca__box__init(detect_response.boxes[i]);
+        detect_response.boxes[i]->x = i * 10;
+        detect_response.boxes[i]->y = i * 20;
+        detect_response.boxes[i]->width = 50 + i * 10;
+        detect_response.boxes[i]->height = 60 + i * 10;
+        detect_response.boxes[i]->confidence = 0.9f - i * 0.1f;
+        detect_response.boxes[i]->label = strdup(i == 0 ? "Car" : "Person");
     }
-
-    return response;
+    UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
+    rpc_response.detect_response = &detect_response;
+    rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_DETECT_RESPONSE;
+    size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
+    uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
+    unnca__rpc_response__pack(&rpc_response, response_buffer);
+    zmq_send(socket, response_buffer, rpc_response_size, 0);
+    // 释放资源
+    for (int i = 0; i < detect_response.n_boxes; i++)
+    {
+        free(detect_response.boxes[i]->label);
+        free(detect_response.boxes[i]);
+    }
+    free(detect_response.boxes);
+    free(response_buffer);
 }
 
 int main()
 {
-    // 初始化 ZMQ 上下文和服务端 socket
     void *context = zmq_ctx_new();
     void *socket = zmq_socket(context, ZMQ_REP);
     zmq_bind(socket, "tcp://*:5555");
@@ -42,52 +68,55 @@ int main()
 
     while (1)
     {
-        // 接收客户端请求
-        uint8_t buffer[1024];
-        int bytes_received = zmq_recv(socket, buffer, sizeof(buffer), 0);
+        zmq_msg_t received_msg;
+        zmq_msg_init(&received_msg);
+        int bytes_received = zmq_msg_recv(&received_msg, socket, 0);
         if (bytes_received < 0)
         {
             perror("zmq_recv failed");
+            zmq_msg_close(&received_msg);
             break;
         }
-
-        // 解析 Request
-        UNNCA__DetectRequest *request = unnca__detect_request__unpack(NULL, bytes_received, buffer);
+        fprintf(stderr, "Received %d bytes\n", bytes_received);
+        const uint8_t *data = (const uint8_t *)zmq_msg_data(&received_msg);
+        fprintf(stderr, "Received data: ");
+        for (int i = 0; i < bytes_received; i++)
+        {
+            fprintf(stderr, "%02x ", data[i]);
+        }
+        fprintf(stderr, "\n");
+        UNNCA__RpcRequest *request = unnca__rpc_request__unpack(NULL, bytes_received, data);
         if (!request)
         {
             fprintf(stderr, "Failed to unpack request");
             continue;
         }
-
-        log_info("Received Request: width=%d, height=%d, data_len=%zu",
-                 request->width, request->height, request->data.len);
-
-        // 调用服务逻辑
-        UNNCA__DetectResponse *response = process_request(request);
-
-        // 序列化 Response
-        size_t response_size = unnca__detect_response__get_packed_size(response);
-        uint8_t *response_buffer = (uint8_t *)malloc(response_size);
-        unnca__detect_response__pack(response, response_buffer);
-
-        // 发送响应
-        zmq_send(socket, response_buffer, response_size, 0);
-
-        // 释放资源
-        unnca__detect_request__free_unpacked(request, NULL);
-        free(response_buffer);
-        for (size_t i = 0; i < response->n_boxes; i++)
+        switch (request->request_case)
         {
-            free(response->boxes[i]->label);
-            free(response->boxes[i]);
+        case UNNCA__RPC_REQUEST__REQUEST_AUTH_REQUEST:
+            printf("Auth request: uuid=%s\n", request->auth_request->uuid);
+            handle_auth_request(socket, request->auth_request);
+            break;
+        case UNNCA__RPC_REQUEST__REQUEST_PING_REQUEST:
+            printf("Ping request received\n");
+            break;
+        case UNNCA__RPC_REQUEST__REQUEST_DETECT_REQUEST:
+            printf("Detect request received\n");
+            break;
+        case UNNCA__RPC_REQUEST__REQUEST_ACCELERATOR_INFO_REQUEST:
+            printf("AcceleratorInfo request received\n");
+            break;
+        case UNNCA__RPC_REQUEST__REQUEST__NOT_SET:
+            printf("Request not set\n");
+            break;
+        default:
+            printf("Unknown request received, request->request_case: %d\n", request->request_case);
+            break;
         }
-        free(response->boxes);
-        free(response);
+        zmq_msg_close(&received_msg);
     }
 
-    // 关闭 ZMQ socket 和上下文
     zmq_close(socket);
     zmq_ctx_destroy(context);
-
     return 0;
 }

@@ -37,7 +37,7 @@ message AuthRequest {
 // 心跳包返回
 message AuthResponse  {
     int32 code = 1;  // 状态码
-    string uuid = 2; // 设备唯一标识
+    string msg = 2; // 设备唯一标识
 }
 // 心跳包
 message PingRequest {
@@ -58,6 +58,23 @@ message AcceleratorInfoResponse {
     string model = 3;  // 型号
     string name = 4;   // 名称
     string uuid = 5;   // 设备唯一标识
+}
+// 通用的消息
+message RpcRequest {
+    oneof request {
+        AuthRequest auth_request = 1;
+        PingRequest ping_request = 2;
+        DetectRequest detect_request = 3;
+        AcceleratorInfoRequest accelerator_info_request = 4;
+    }
+}
+message RpcResponse {
+    oneof response {
+        AuthResponse auth_response = 1;
+        PingResponse ping_response = 2;
+        DetectResponse detect_response = 3;
+        AcceleratorInfoResponse accelerator_info_response = 4;
+    }
 }
 
 // 定义服务接口

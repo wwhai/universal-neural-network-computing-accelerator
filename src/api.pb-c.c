@@ -7,946 +7,1113 @@
 #endif
 
 #include "api.pb-c.h"
-void   unnca__detect_request__init
-                     (UNNCA__DetectRequest         *message)
+void unnca__detect_request__init(UNNCA__DetectRequest *message)
 {
   static const UNNCA__DetectRequest init_value = UNNCA__DETECT_REQUEST__INIT;
   *message = init_value;
 }
-size_t unnca__detect_request__get_packed_size
-                     (const UNNCA__DetectRequest *message)
+size_t unnca__detect_request__get_packed_size(const UNNCA__DetectRequest *message)
 {
   assert(message->base.descriptor == &unnca__detect_request__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__detect_request__pack
-                     (const UNNCA__DetectRequest *message,
-                      uint8_t       *out)
+size_t unnca__detect_request__pack(const UNNCA__DetectRequest *message,
+                                   uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__detect_request__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__detect_request__pack_to_buffer
-                     (const UNNCA__DetectRequest *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__detect_request__pack_to_buffer(const UNNCA__DetectRequest *message,
+                                             ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__detect_request__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__DetectRequest *
-       unnca__detect_request__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__detect_request__unpack(ProtobufCAllocator *allocator,
+                              size_t len,
+                              const uint8_t *data)
 {
   return (UNNCA__DetectRequest *)
-     protobuf_c_message_unpack (&unnca__detect_request__descriptor,
+      protobuf_c_message_unpack(&unnca__detect_request__descriptor,
                                 allocator, len, data);
 }
-void   unnca__detect_request__free_unpacked
-                     (UNNCA__DetectRequest *message,
-                      ProtobufCAllocator *allocator)
+void unnca__detect_request__free_unpacked(UNNCA__DetectRequest *message,
+                                          ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__detect_request__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__box__init
-                     (UNNCA__Box         *message)
+void unnca__box__init(UNNCA__Box *message)
 {
   static const UNNCA__Box init_value = UNNCA__BOX__INIT;
   *message = init_value;
 }
-size_t unnca__box__get_packed_size
-                     (const UNNCA__Box *message)
+size_t unnca__box__get_packed_size(const UNNCA__Box *message)
 {
   assert(message->base.descriptor == &unnca__box__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__box__pack
-                     (const UNNCA__Box *message,
-                      uint8_t       *out)
+size_t unnca__box__pack(const UNNCA__Box *message,
+                        uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__box__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__box__pack_to_buffer
-                     (const UNNCA__Box *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__box__pack_to_buffer(const UNNCA__Box *message,
+                                  ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__box__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__Box *
-       unnca__box__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__box__unpack(ProtobufCAllocator *allocator,
+                   size_t len,
+                   const uint8_t *data)
 {
   return (UNNCA__Box *)
-     protobuf_c_message_unpack (&unnca__box__descriptor,
+      protobuf_c_message_unpack(&unnca__box__descriptor,
                                 allocator, len, data);
 }
-void   unnca__box__free_unpacked
-                     (UNNCA__Box *message,
-                      ProtobufCAllocator *allocator)
+void unnca__box__free_unpacked(UNNCA__Box *message,
+                               ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__box__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__detect_response__init
-                     (UNNCA__DetectResponse         *message)
+void unnca__detect_response__init(UNNCA__DetectResponse *message)
 {
   static const UNNCA__DetectResponse init_value = UNNCA__DETECT_RESPONSE__INIT;
   *message = init_value;
 }
-size_t unnca__detect_response__get_packed_size
-                     (const UNNCA__DetectResponse *message)
+size_t unnca__detect_response__get_packed_size(const UNNCA__DetectResponse *message)
 {
   assert(message->base.descriptor == &unnca__detect_response__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__detect_response__pack
-                     (const UNNCA__DetectResponse *message,
-                      uint8_t       *out)
+size_t unnca__detect_response__pack(const UNNCA__DetectResponse *message,
+                                    uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__detect_response__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__detect_response__pack_to_buffer
-                     (const UNNCA__DetectResponse *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__detect_response__pack_to_buffer(const UNNCA__DetectResponse *message,
+                                              ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__detect_response__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__DetectResponse *
-       unnca__detect_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__detect_response__unpack(ProtobufCAllocator *allocator,
+                               size_t len,
+                               const uint8_t *data)
 {
   return (UNNCA__DetectResponse *)
-     protobuf_c_message_unpack (&unnca__detect_response__descriptor,
+      protobuf_c_message_unpack(&unnca__detect_response__descriptor,
                                 allocator, len, data);
 }
-void   unnca__detect_response__free_unpacked
-                     (UNNCA__DetectResponse *message,
-                      ProtobufCAllocator *allocator)
+void unnca__detect_response__free_unpacked(UNNCA__DetectResponse *message,
+                                           ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__detect_response__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__auth_request__init
-                     (UNNCA__AuthRequest         *message)
+void unnca__auth_request__init(UNNCA__AuthRequest *message)
 {
   static const UNNCA__AuthRequest init_value = UNNCA__AUTH_REQUEST__INIT;
   *message = init_value;
 }
-size_t unnca__auth_request__get_packed_size
-                     (const UNNCA__AuthRequest *message)
+size_t unnca__auth_request__get_packed_size(const UNNCA__AuthRequest *message)
 {
   assert(message->base.descriptor == &unnca__auth_request__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__auth_request__pack
-                     (const UNNCA__AuthRequest *message,
-                      uint8_t       *out)
+size_t unnca__auth_request__pack(const UNNCA__AuthRequest *message,
+                                 uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__auth_request__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__auth_request__pack_to_buffer
-                     (const UNNCA__AuthRequest *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__auth_request__pack_to_buffer(const UNNCA__AuthRequest *message,
+                                           ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__auth_request__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__AuthRequest *
-       unnca__auth_request__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__auth_request__unpack(ProtobufCAllocator *allocator,
+                            size_t len,
+                            const uint8_t *data)
 {
   return (UNNCA__AuthRequest *)
-     protobuf_c_message_unpack (&unnca__auth_request__descriptor,
+      protobuf_c_message_unpack(&unnca__auth_request__descriptor,
                                 allocator, len, data);
 }
-void   unnca__auth_request__free_unpacked
-                     (UNNCA__AuthRequest *message,
-                      ProtobufCAllocator *allocator)
+void unnca__auth_request__free_unpacked(UNNCA__AuthRequest *message,
+                                        ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__auth_request__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__auth_response__init
-                     (UNNCA__AuthResponse         *message)
+void unnca__auth_response__init(UNNCA__AuthResponse *message)
 {
   static const UNNCA__AuthResponse init_value = UNNCA__AUTH_RESPONSE__INIT;
   *message = init_value;
 }
-size_t unnca__auth_response__get_packed_size
-                     (const UNNCA__AuthResponse *message)
+size_t unnca__auth_response__get_packed_size(const UNNCA__AuthResponse *message)
 {
   assert(message->base.descriptor == &unnca__auth_response__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__auth_response__pack
-                     (const UNNCA__AuthResponse *message,
-                      uint8_t       *out)
+size_t unnca__auth_response__pack(const UNNCA__AuthResponse *message,
+                                  uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__auth_response__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__auth_response__pack_to_buffer
-                     (const UNNCA__AuthResponse *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__auth_response__pack_to_buffer(const UNNCA__AuthResponse *message,
+                                            ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__auth_response__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__AuthResponse *
-       unnca__auth_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__auth_response__unpack(ProtobufCAllocator *allocator,
+                             size_t len,
+                             const uint8_t *data)
 {
   return (UNNCA__AuthResponse *)
-     protobuf_c_message_unpack (&unnca__auth_response__descriptor,
+      protobuf_c_message_unpack(&unnca__auth_response__descriptor,
                                 allocator, len, data);
 }
-void   unnca__auth_response__free_unpacked
-                     (UNNCA__AuthResponse *message,
-                      ProtobufCAllocator *allocator)
+void unnca__auth_response__free_unpacked(UNNCA__AuthResponse *message,
+                                         ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__auth_response__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__ping_request__init
-                     (UNNCA__PingRequest         *message)
+void unnca__ping_request__init(UNNCA__PingRequest *message)
 {
   static const UNNCA__PingRequest init_value = UNNCA__PING_REQUEST__INIT;
   *message = init_value;
 }
-size_t unnca__ping_request__get_packed_size
-                     (const UNNCA__PingRequest *message)
+size_t unnca__ping_request__get_packed_size(const UNNCA__PingRequest *message)
 {
   assert(message->base.descriptor == &unnca__ping_request__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__ping_request__pack
-                     (const UNNCA__PingRequest *message,
-                      uint8_t       *out)
+size_t unnca__ping_request__pack(const UNNCA__PingRequest *message,
+                                 uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__ping_request__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__ping_request__pack_to_buffer
-                     (const UNNCA__PingRequest *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__ping_request__pack_to_buffer(const UNNCA__PingRequest *message,
+                                           ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__ping_request__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__PingRequest *
-       unnca__ping_request__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__ping_request__unpack(ProtobufCAllocator *allocator,
+                            size_t len,
+                            const uint8_t *data)
 {
   return (UNNCA__PingRequest *)
-     protobuf_c_message_unpack (&unnca__ping_request__descriptor,
+      protobuf_c_message_unpack(&unnca__ping_request__descriptor,
                                 allocator, len, data);
 }
-void   unnca__ping_request__free_unpacked
-                     (UNNCA__PingRequest *message,
-                      ProtobufCAllocator *allocator)
+void unnca__ping_request__free_unpacked(UNNCA__PingRequest *message,
+                                        ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__ping_request__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__ping_response__init
-                     (UNNCA__PingResponse         *message)
+void unnca__ping_response__init(UNNCA__PingResponse *message)
 {
   static const UNNCA__PingResponse init_value = UNNCA__PING_RESPONSE__INIT;
   *message = init_value;
 }
-size_t unnca__ping_response__get_packed_size
-                     (const UNNCA__PingResponse *message)
+size_t unnca__ping_response__get_packed_size(const UNNCA__PingResponse *message)
 {
   assert(message->base.descriptor == &unnca__ping_response__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__ping_response__pack
-                     (const UNNCA__PingResponse *message,
-                      uint8_t       *out)
+size_t unnca__ping_response__pack(const UNNCA__PingResponse *message,
+                                  uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__ping_response__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__ping_response__pack_to_buffer
-                     (const UNNCA__PingResponse *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__ping_response__pack_to_buffer(const UNNCA__PingResponse *message,
+                                            ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__ping_response__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__PingResponse *
-       unnca__ping_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__ping_response__unpack(ProtobufCAllocator *allocator,
+                             size_t len,
+                             const uint8_t *data)
 {
   return (UNNCA__PingResponse *)
-     protobuf_c_message_unpack (&unnca__ping_response__descriptor,
+      protobuf_c_message_unpack(&unnca__ping_response__descriptor,
                                 allocator, len, data);
 }
-void   unnca__ping_response__free_unpacked
-                     (UNNCA__PingResponse *message,
-                      ProtobufCAllocator *allocator)
+void unnca__ping_response__free_unpacked(UNNCA__PingResponse *message,
+                                         ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__ping_response__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__accelerator_info_request__init
-                     (UNNCA__AcceleratorInfoRequest         *message)
+void unnca__accelerator_info_request__init(UNNCA__AcceleratorInfoRequest *message)
 {
   static const UNNCA__AcceleratorInfoRequest init_value = UNNCA__ACCELERATOR_INFO_REQUEST__INIT;
   *message = init_value;
 }
-size_t unnca__accelerator_info_request__get_packed_size
-                     (const UNNCA__AcceleratorInfoRequest *message)
+size_t unnca__accelerator_info_request__get_packed_size(const UNNCA__AcceleratorInfoRequest *message)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_request__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__accelerator_info_request__pack
-                     (const UNNCA__AcceleratorInfoRequest *message,
-                      uint8_t       *out)
+size_t unnca__accelerator_info_request__pack(const UNNCA__AcceleratorInfoRequest *message,
+                                             uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_request__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__accelerator_info_request__pack_to_buffer
-                     (const UNNCA__AcceleratorInfoRequest *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__accelerator_info_request__pack_to_buffer(const UNNCA__AcceleratorInfoRequest *message,
+                                                       ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_request__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__AcceleratorInfoRequest *
-       unnca__accelerator_info_request__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__accelerator_info_request__unpack(ProtobufCAllocator *allocator,
+                                        size_t len,
+                                        const uint8_t *data)
 {
   return (UNNCA__AcceleratorInfoRequest *)
-     protobuf_c_message_unpack (&unnca__accelerator_info_request__descriptor,
+      protobuf_c_message_unpack(&unnca__accelerator_info_request__descriptor,
                                 allocator, len, data);
 }
-void   unnca__accelerator_info_request__free_unpacked
-                     (UNNCA__AcceleratorInfoRequest *message,
-                      ProtobufCAllocator *allocator)
+void unnca__accelerator_info_request__free_unpacked(UNNCA__AcceleratorInfoRequest *message,
+                                                    ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__accelerator_info_request__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
-void   unnca__accelerator_info_response__init
-                     (UNNCA__AcceleratorInfoResponse         *message)
+void unnca__accelerator_info_response__init(UNNCA__AcceleratorInfoResponse *message)
 {
   static const UNNCA__AcceleratorInfoResponse init_value = UNNCA__ACCELERATOR_INFO_RESPONSE__INIT;
   *message = init_value;
 }
-size_t unnca__accelerator_info_response__get_packed_size
-                     (const UNNCA__AcceleratorInfoResponse *message)
+size_t unnca__accelerator_info_response__get_packed_size(const UNNCA__AcceleratorInfoResponse *message)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_response__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
 }
-size_t unnca__accelerator_info_response__pack
-                     (const UNNCA__AcceleratorInfoResponse *message,
-                      uint8_t       *out)
+size_t unnca__accelerator_info_response__pack(const UNNCA__AcceleratorInfoResponse *message,
+                                              uint8_t *out)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_response__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
 }
-size_t unnca__accelerator_info_response__pack_to_buffer
-                     (const UNNCA__AcceleratorInfoResponse *message,
-                      ProtobufCBuffer *buffer)
+size_t unnca__accelerator_info_response__pack_to_buffer(const UNNCA__AcceleratorInfoResponse *message,
+                                                        ProtobufCBuffer *buffer)
 {
   assert(message->base.descriptor == &unnca__accelerator_info_response__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
 }
 UNNCA__AcceleratorInfoResponse *
-       unnca__accelerator_info_response__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+unnca__accelerator_info_response__unpack(ProtobufCAllocator *allocator,
+                                         size_t len,
+                                         const uint8_t *data)
 {
   return (UNNCA__AcceleratorInfoResponse *)
-     protobuf_c_message_unpack (&unnca__accelerator_info_response__descriptor,
+      protobuf_c_message_unpack(&unnca__accelerator_info_response__descriptor,
                                 allocator, len, data);
 }
-void   unnca__accelerator_info_response__free_unpacked
-                     (UNNCA__AcceleratorInfoResponse *message,
-                      ProtobufCAllocator *allocator)
+void unnca__accelerator_info_response__free_unpacked(UNNCA__AcceleratorInfoResponse *message,
+                                                     ProtobufCAllocator *allocator)
 {
-  if(!message)
+  if (!message)
     return;
   assert(message->base.descriptor == &unnca__accelerator_info_response__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
+}
+void unnca__rpc_request__init(UNNCA__RpcRequest *message)
+{
+  static const UNNCA__RpcRequest init_value = UNNCA__RPC_REQUEST__INIT;
+  *message = init_value;
+}
+size_t unnca__rpc_request__get_packed_size(const UNNCA__RpcRequest *message)
+{
+  assert(message->base.descriptor == &unnca__rpc_request__descriptor);
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
+}
+size_t unnca__rpc_request__pack(const UNNCA__RpcRequest *message,
+                                uint8_t *out)
+{
+  assert(message->base.descriptor == &unnca__rpc_request__descriptor);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
+}
+size_t unnca__rpc_request__pack_to_buffer(const UNNCA__RpcRequest *message,
+                                          ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &unnca__rpc_request__descriptor);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
+}
+UNNCA__RpcRequest *
+unnca__rpc_request__unpack(ProtobufCAllocator *allocator,
+                           size_t len,
+                           const uint8_t *data)
+{
+  return (UNNCA__RpcRequest *)
+      protobuf_c_message_unpack(&unnca__rpc_request__descriptor,
+                                allocator, len, data);
+}
+void unnca__rpc_request__free_unpacked(UNNCA__RpcRequest *message,
+                                       ProtobufCAllocator *allocator)
+{
+  if (!message)
+    return;
+  assert(message->base.descriptor == &unnca__rpc_request__descriptor);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
+}
+void unnca__rpc_response__init(UNNCA__RpcResponse *message)
+{
+  static const UNNCA__RpcResponse init_value = UNNCA__RPC_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t unnca__rpc_response__get_packed_size(const UNNCA__RpcResponse *message)
+{
+  assert(message->base.descriptor == &unnca__rpc_response__descriptor);
+  return protobuf_c_message_get_packed_size((const ProtobufCMessage *)(message));
+}
+size_t unnca__rpc_response__pack(const UNNCA__RpcResponse *message,
+                                 uint8_t *out)
+{
+  assert(message->base.descriptor == &unnca__rpc_response__descriptor);
+  return protobuf_c_message_pack((const ProtobufCMessage *)message, out);
+}
+size_t unnca__rpc_response__pack_to_buffer(const UNNCA__RpcResponse *message,
+                                           ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &unnca__rpc_response__descriptor);
+  return protobuf_c_message_pack_to_buffer((const ProtobufCMessage *)message, buffer);
+}
+UNNCA__RpcResponse *
+unnca__rpc_response__unpack(ProtobufCAllocator *allocator,
+                            size_t len,
+                            const uint8_t *data)
+{
+  return (UNNCA__RpcResponse *)
+      protobuf_c_message_unpack(&unnca__rpc_response__descriptor,
+                                allocator, len, data);
+}
+void unnca__rpc_response__free_unpacked(UNNCA__RpcResponse *message,
+                                        ProtobufCAllocator *allocator)
+{
+  if (!message)
+    return;
+  assert(message->base.descriptor == &unnca__rpc_response__descriptor);
+  protobuf_c_message_free_unpacked((ProtobufCMessage *)message, allocator);
 }
 static const ProtobufCFieldDescriptor unnca__detect_request__field_descriptors[3] =
-{
-  {
-    "width",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__DetectRequest, width),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "height",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__DetectRequest, height),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "data",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_BYTES,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__DetectRequest, data),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "width",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__DetectRequest, width),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "height",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__DetectRequest, height),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "data",
+            3,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_BYTES,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__DetectRequest, data),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__detect_request__field_indices_by_name[] = {
-  2,   /* field[2] = data */
-  1,   /* field[1] = height */
-  0,   /* field[0] = width */
+    2, /* field[2] = data */
+    1, /* field[1] = height */
+    0, /* field[0] = width */
 };
 static const ProtobufCIntRange unnca__detect_request__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
+    {
+        {1, 0},
+        {0, 3}};
 const ProtobufCMessageDescriptor unnca__detect_request__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.DetectRequest",
-  "DetectRequest",
-  "UNNCA__DetectRequest",
-  "UNNCA",
-  sizeof(UNNCA__DetectRequest),
-  3,
-  unnca__detect_request__field_descriptors,
-  unnca__detect_request__field_indices_by_name,
-  1,  unnca__detect_request__number_ranges,
-  (ProtobufCMessageInit) unnca__detect_request__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.DetectRequest",
+        "DetectRequest",
+        "UNNCA__DetectRequest",
+        "UNNCA",
+        sizeof(UNNCA__DetectRequest),
+        3,
+        unnca__detect_request__field_descriptors,
+        unnca__detect_request__field_indices_by_name,
+        1, unnca__detect_request__number_ranges,
+        (ProtobufCMessageInit)unnca__detect_request__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__box__field_descriptors[6] =
-{
-  {
-    "x",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, x),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "y",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, y),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "width",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, width),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "height",
-    4,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, height),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "confidence",
-    5,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, confidence),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "label",
-    6,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__Box, label),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "x",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, x),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "y",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, y),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "width",
+            3,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, width),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "height",
+            4,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, height),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "confidence",
+            5,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_FLOAT,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, confidence),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "label",
+            6,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__Box, label),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__box__field_indices_by_name[] = {
-  4,   /* field[4] = confidence */
-  3,   /* field[3] = height */
-  5,   /* field[5] = label */
-  2,   /* field[2] = width */
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
+    4, /* field[4] = confidence */
+    3, /* field[3] = height */
+    5, /* field[5] = label */
+    2, /* field[2] = width */
+    0, /* field[0] = x */
+    1, /* field[1] = y */
 };
 static const ProtobufCIntRange unnca__box__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 6 }
-};
+    {
+        {1, 0},
+        {0, 6}};
 const ProtobufCMessageDescriptor unnca__box__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.Box",
-  "Box",
-  "UNNCA__Box",
-  "UNNCA",
-  sizeof(UNNCA__Box),
-  6,
-  unnca__box__field_descriptors,
-  unnca__box__field_indices_by_name,
-  1,  unnca__box__number_ranges,
-  (ProtobufCMessageInit) unnca__box__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.Box",
+        "Box",
+        "UNNCA__Box",
+        "UNNCA",
+        sizeof(UNNCA__Box),
+        6,
+        unnca__box__field_descriptors,
+        unnca__box__field_indices_by_name,
+        1, unnca__box__number_ranges,
+        (ProtobufCMessageInit)unnca__box__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__detect_response__field_descriptors[2] =
-{
-  {
-    "box_count",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__DetectResponse, box_count),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "boxes",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(UNNCA__DetectResponse, n_boxes),
-    offsetof(UNNCA__DetectResponse, boxes),
-    &unnca__box__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "box_count",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__DetectResponse, box_count),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "boxes",
+            2,
+            PROTOBUF_C_LABEL_REPEATED,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__DetectResponse, n_boxes),
+            offsetof(UNNCA__DetectResponse, boxes),
+            &unnca__box__descriptor,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__detect_response__field_indices_by_name[] = {
-  0,   /* field[0] = box_count */
-  1,   /* field[1] = boxes */
+    0, /* field[0] = box_count */
+    1, /* field[1] = boxes */
 };
 static const ProtobufCIntRange unnca__detect_response__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
+    {
+        {1, 0},
+        {0, 2}};
 const ProtobufCMessageDescriptor unnca__detect_response__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.DetectResponse",
-  "DetectResponse",
-  "UNNCA__DetectResponse",
-  "UNNCA",
-  sizeof(UNNCA__DetectResponse),
-  2,
-  unnca__detect_response__field_descriptors,
-  unnca__detect_response__field_indices_by_name,
-  1,  unnca__detect_response__number_ranges,
-  (ProtobufCMessageInit) unnca__detect_response__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.DetectResponse",
+        "DetectResponse",
+        "UNNCA__DetectResponse",
+        "UNNCA",
+        sizeof(UNNCA__DetectResponse),
+        2,
+        unnca__detect_response__field_descriptors,
+        unnca__detect_response__field_indices_by_name,
+        1, unnca__detect_response__number_ranges,
+        (ProtobufCMessageInit)unnca__detect_response__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__auth_request__field_descriptors[1] =
-{
-  {
-    "uuid",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AuthRequest, uuid),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "uuid",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AuthRequest, uuid),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__auth_request__field_indices_by_name[] = {
-  0,   /* field[0] = uuid */
+    0, /* field[0] = uuid */
 };
 static const ProtobufCIntRange unnca__auth_request__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 1 }
-};
+    {
+        {1, 0},
+        {0, 1}};
 const ProtobufCMessageDescriptor unnca__auth_request__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.AuthRequest",
-  "AuthRequest",
-  "UNNCA__AuthRequest",
-  "UNNCA",
-  sizeof(UNNCA__AuthRequest),
-  1,
-  unnca__auth_request__field_descriptors,
-  unnca__auth_request__field_indices_by_name,
-  1,  unnca__auth_request__number_ranges,
-  (ProtobufCMessageInit) unnca__auth_request__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.AuthRequest",
+        "AuthRequest",
+        "UNNCA__AuthRequest",
+        "UNNCA",
+        sizeof(UNNCA__AuthRequest),
+        1,
+        unnca__auth_request__field_descriptors,
+        unnca__auth_request__field_indices_by_name,
+        1, unnca__auth_request__number_ranges,
+        (ProtobufCMessageInit)unnca__auth_request__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__auth_response__field_descriptors[2] =
-{
-  {
-    "code",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AuthResponse, code),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "uuid",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AuthResponse, uuid),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "code",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AuthResponse, code),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "msg",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AuthResponse, msg),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__auth_response__field_indices_by_name[] = {
-  0,   /* field[0] = code */
-  1,   /* field[1] = uuid */
+    0, /* field[0] = code */
+    1, /* field[1] = msg */
 };
 static const ProtobufCIntRange unnca__auth_response__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
+    {
+        {1, 0},
+        {0, 2}};
 const ProtobufCMessageDescriptor unnca__auth_response__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.AuthResponse",
-  "AuthResponse",
-  "UNNCA__AuthResponse",
-  "UNNCA",
-  sizeof(UNNCA__AuthResponse),
-  2,
-  unnca__auth_response__field_descriptors,
-  unnca__auth_response__field_indices_by_name,
-  1,  unnca__auth_response__number_ranges,
-  (ProtobufCMessageInit) unnca__auth_response__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.AuthResponse",
+        "AuthResponse",
+        "UNNCA__AuthResponse",
+        "UNNCA",
+        sizeof(UNNCA__AuthResponse),
+        2,
+        unnca__auth_response__field_descriptors,
+        unnca__auth_response__field_indices_by_name,
+        1, unnca__auth_response__number_ranges,
+        (ProtobufCMessageInit)unnca__auth_response__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__ping_request__field_descriptors[2] =
-{
-  {
-    "code",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__PingRequest, code),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "uuid",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__PingRequest, uuid),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "code",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__PingRequest, code),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "uuid",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__PingRequest, uuid),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__ping_request__field_indices_by_name[] = {
-  0,   /* field[0] = code */
-  1,   /* field[1] = uuid */
+    0, /* field[0] = code */
+    1, /* field[1] = uuid */
 };
 static const ProtobufCIntRange unnca__ping_request__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
+    {
+        {1, 0},
+        {0, 2}};
 const ProtobufCMessageDescriptor unnca__ping_request__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.PingRequest",
-  "PingRequest",
-  "UNNCA__PingRequest",
-  "UNNCA",
-  sizeof(UNNCA__PingRequest),
-  2,
-  unnca__ping_request__field_descriptors,
-  unnca__ping_request__field_indices_by_name,
-  1,  unnca__ping_request__number_ranges,
-  (ProtobufCMessageInit) unnca__ping_request__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.PingRequest",
+        "PingRequest",
+        "UNNCA__PingRequest",
+        "UNNCA",
+        sizeof(UNNCA__PingRequest),
+        2,
+        unnca__ping_request__field_descriptors,
+        unnca__ping_request__field_indices_by_name,
+        1, unnca__ping_request__number_ranges,
+        (ProtobufCMessageInit)unnca__ping_request__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__ping_response__field_descriptors[1] =
-{
-  {
-    "status",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__PingResponse, status),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "status",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_INT32,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__PingResponse, status),
+            NULL,
+            NULL,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__ping_response__field_indices_by_name[] = {
-  0,   /* field[0] = status */
+    0, /* field[0] = status */
 };
 static const ProtobufCIntRange unnca__ping_response__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 1 }
-};
+    {
+        {1, 0},
+        {0, 1}};
 const ProtobufCMessageDescriptor unnca__ping_response__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.PingResponse",
-  "PingResponse",
-  "UNNCA__PingResponse",
-  "UNNCA",
-  sizeof(UNNCA__PingResponse),
-  1,
-  unnca__ping_response__field_descriptors,
-  unnca__ping_response__field_indices_by_name,
-  1,  unnca__ping_response__number_ranges,
-  (ProtobufCMessageInit) unnca__ping_response__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.PingResponse",
+        "PingResponse",
+        "UNNCA__PingResponse",
+        "UNNCA",
+        sizeof(UNNCA__PingResponse),
+        1,
+        unnca__ping_response__field_descriptors,
+        unnca__ping_response__field_indices_by_name,
+        1, unnca__ping_response__number_ranges,
+        (ProtobufCMessageInit)unnca__ping_response__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 #define unnca__accelerator_info_request__field_descriptors NULL
 #define unnca__accelerator_info_request__field_indices_by_name NULL
 #define unnca__accelerator_info_request__number_ranges NULL
 const ProtobufCMessageDescriptor unnca__accelerator_info_request__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.AcceleratorInfoRequest",
-  "AcceleratorInfoRequest",
-  "UNNCA__AcceleratorInfoRequest",
-  "UNNCA",
-  sizeof(UNNCA__AcceleratorInfoRequest),
-  0,
-  unnca__accelerator_info_request__field_descriptors,
-  unnca__accelerator_info_request__field_indices_by_name,
-  0,  unnca__accelerator_info_request__number_ranges,
-  (ProtobufCMessageInit) unnca__accelerator_info_request__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.AcceleratorInfoRequest",
+        "AcceleratorInfoRequest",
+        "UNNCA__AcceleratorInfoRequest",
+        "UNNCA",
+        sizeof(UNNCA__AcceleratorInfoRequest),
+        0,
+        unnca__accelerator_info_request__field_descriptors,
+        unnca__accelerator_info_request__field_indices_by_name,
+        0, unnca__accelerator_info_request__number_ranges,
+        (ProtobufCMessageInit)unnca__accelerator_info_request__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor unnca__accelerator_info_response__field_descriptors[5] =
-{
-  {
-    "version",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AcceleratorInfoResponse, version),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "vendor",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AcceleratorInfoResponse, vendor),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "model",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AcceleratorInfoResponse, model),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "name",
-    4,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AcceleratorInfoResponse, name),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "uuid",
-    5,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(UNNCA__AcceleratorInfoResponse, uuid),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
+    {
+        {
+            "version",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AcceleratorInfoResponse, version),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "vendor",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AcceleratorInfoResponse, vendor),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "model",
+            3,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AcceleratorInfoResponse, model),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "name",
+            4,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AcceleratorInfoResponse, name),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
+        {
+            "uuid",
+            5,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_STRING,
+            0, /* quantifier_offset */
+            offsetof(UNNCA__AcceleratorInfoResponse, uuid),
+            NULL,
+            &protobuf_c_empty_string,
+            0,            /* flags */
+            0, NULL, NULL /* reserved1,reserved2, etc */
+        },
 };
 static const unsigned unnca__accelerator_info_response__field_indices_by_name[] = {
-  2,   /* field[2] = model */
-  3,   /* field[3] = name */
-  4,   /* field[4] = uuid */
-  1,   /* field[1] = vendor */
-  0,   /* field[0] = version */
+    2, /* field[2] = model */
+    3, /* field[3] = name */
+    4, /* field[4] = uuid */
+    1, /* field[1] = vendor */
+    0, /* field[0] = version */
 };
 static const ProtobufCIntRange unnca__accelerator_info_response__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 5 }
-};
+    {
+        {1, 0},
+        {0, 5}};
 const ProtobufCMessageDescriptor unnca__accelerator_info_response__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "UNNCA.AcceleratorInfoResponse",
-  "AcceleratorInfoResponse",
-  "UNNCA__AcceleratorInfoResponse",
-  "UNNCA",
-  sizeof(UNNCA__AcceleratorInfoResponse),
-  5,
-  unnca__accelerator_info_response__field_descriptors,
-  unnca__accelerator_info_response__field_indices_by_name,
-  1,  unnca__accelerator_info_response__number_ranges,
-  (ProtobufCMessageInit) unnca__accelerator_info_response__init,
-  NULL,NULL,NULL    /* reserved[123] */
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.AcceleratorInfoResponse",
+        "AcceleratorInfoResponse",
+        "UNNCA__AcceleratorInfoResponse",
+        "UNNCA",
+        sizeof(UNNCA__AcceleratorInfoResponse),
+        5,
+        unnca__accelerator_info_response__field_descriptors,
+        unnca__accelerator_info_response__field_indices_by_name,
+        1, unnca__accelerator_info_response__number_ranges,
+        (ProtobufCMessageInit)unnca__accelerator_info_response__init,
+        NULL, NULL, NULL /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor unnca__rpc_request__field_descriptors[4] =
+    {
+        {
+            "auth_request",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcRequest, request_case),
+            offsetof(UNNCA__RpcRequest, auth_request),
+            &unnca__auth_request__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "ping_request",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcRequest, request_case),
+            offsetof(UNNCA__RpcRequest, ping_request),
+            &unnca__ping_request__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "detect_request",
+            3,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcRequest, request_case),
+            offsetof(UNNCA__RpcRequest, detect_request),
+            &unnca__detect_request__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "accelerator_info_request",
+            4,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcRequest, request_case),
+            offsetof(UNNCA__RpcRequest, accelerator_info_request),
+            &unnca__accelerator_info_request__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+};
+static const unsigned unnca__rpc_request__field_indices_by_name[] = {
+    3, /* field[3] = accelerator_info_request */
+    0, /* field[0] = auth_request */
+    2, /* field[2] = detect_request */
+    1, /* field[1] = ping_request */
+};
+static const ProtobufCIntRange unnca__rpc_request__number_ranges[1 + 1] =
+    {
+        {1, 0},
+        {0, 4}};
+const ProtobufCMessageDescriptor unnca__rpc_request__descriptor =
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.RpcRequest",
+        "RpcRequest",
+        "UNNCA__RpcRequest",
+        "UNNCA",
+        sizeof(UNNCA__RpcRequest),
+        4,
+        unnca__rpc_request__field_descriptors,
+        unnca__rpc_request__field_indices_by_name,
+        1, unnca__rpc_request__number_ranges,
+        (ProtobufCMessageInit)unnca__rpc_request__init,
+        NULL, NULL, NULL /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor unnca__rpc_response__field_descriptors[4] =
+    {
+        {
+            "auth_response",
+            1,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcResponse, response_case),
+            offsetof(UNNCA__RpcResponse, auth_response),
+            &unnca__auth_response__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "ping_response",
+            2,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcResponse, response_case),
+            offsetof(UNNCA__RpcResponse, ping_response),
+            &unnca__ping_response__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "detect_response",
+            3,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcResponse, response_case),
+            offsetof(UNNCA__RpcResponse, detect_response),
+            &unnca__detect_response__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+        {
+            "accelerator_info_response",
+            4,
+            PROTOBUF_C_LABEL_NONE,
+            PROTOBUF_C_TYPE_MESSAGE,
+            offsetof(UNNCA__RpcResponse, response_case),
+            offsetof(UNNCA__RpcResponse, accelerator_info_response),
+            &unnca__accelerator_info_response__descriptor,
+            NULL,
+            0 | PROTOBUF_C_FIELD_FLAG_ONEOF, /* flags */
+            0, NULL, NULL                    /* reserved1,reserved2, etc */
+        },
+};
+static const unsigned unnca__rpc_response__field_indices_by_name[] = {
+    3, /* field[3] = accelerator_info_response */
+    0, /* field[0] = auth_response */
+    2, /* field[2] = detect_response */
+    1, /* field[1] = ping_response */
+};
+static const ProtobufCIntRange unnca__rpc_response__number_ranges[1 + 1] =
+    {
+        {1, 0},
+        {0, 4}};
+const ProtobufCMessageDescriptor unnca__rpc_response__descriptor =
+    {
+        PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+        "UNNCA.RpcResponse",
+        "RpcResponse",
+        "UNNCA__RpcResponse",
+        "UNNCA",
+        sizeof(UNNCA__RpcResponse),
+        4,
+        unnca__rpc_response__field_descriptors,
+        unnca__rpc_response__field_indices_by_name,
+        1, unnca__rpc_response__number_ranges,
+        (ProtobufCMessageInit)unnca__rpc_response__init,
+        NULL, NULL, NULL /* reserved[123] */
 };
 static const ProtobufCMethodDescriptor unnca__detection_service__method_descriptors[4] =
-{
-  { "Auth", &unnca__auth_request__descriptor, &unnca__auth_response__descriptor },
-  { "Detect", &unnca__detect_request__descriptor, &unnca__detect_response__descriptor },
-  { "Ping", &unnca__ping_request__descriptor, &unnca__ping_response__descriptor },
-  { "AcceleratorInfo", &unnca__accelerator_info_request__descriptor, &unnca__accelerator_info_response__descriptor },
+    {
+        {"Auth", &unnca__auth_request__descriptor, &unnca__auth_response__descriptor},
+        {"Detect", &unnca__detect_request__descriptor, &unnca__detect_response__descriptor},
+        {"Ping", &unnca__ping_request__descriptor, &unnca__ping_response__descriptor},
+        {"AcceleratorInfo", &unnca__accelerator_info_request__descriptor, &unnca__accelerator_info_response__descriptor},
 };
 const unsigned unnca__detection_service__method_indices_by_name[] = {
-  3,        /* AcceleratorInfo */
-  0,        /* Auth */
-  1,        /* Detect */
-  2         /* Ping */
+    3, /* AcceleratorInfo */
+    0, /* Auth */
+    1, /* Detect */
+    2  /* Ping */
 };
 const ProtobufCServiceDescriptor unnca__detection_service__descriptor =
-{
-  PROTOBUF_C__SERVICE_DESCRIPTOR_MAGIC,
-  "UNNCA.DetectionService",
-  "DetectionService",
-  "UNNCA__DetectionService",
-  "UNNCA",
-  4,
-  unnca__detection_service__method_descriptors,
-  unnca__detection_service__method_indices_by_name
-};
+    {
+        PROTOBUF_C__SERVICE_DESCRIPTOR_MAGIC,
+        "UNNCA.DetectionService",
+        "DetectionService",
+        "UNNCA__DetectionService",
+        "UNNCA",
+        4,
+        unnca__detection_service__method_descriptors,
+        unnca__detection_service__method_indices_by_name};
 void unnca__detection_service__auth(ProtobufCService *service,
                                     const UNNCA__AuthRequest *input,
                                     UNNCA__AuthResponse_Closure closure,
                                     void *closure_data)
 {
   assert(service->descriptor == &unnca__detection_service__descriptor);
-  service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 0, (const ProtobufCMessage *)input, (ProtobufCClosure)closure, closure_data);
 }
 void unnca__detection_service__detect(ProtobufCService *service,
                                       const UNNCA__DetectRequest *input,
@@ -954,7 +1121,7 @@ void unnca__detection_service__detect(ProtobufCService *service,
                                       void *closure_data)
 {
   assert(service->descriptor == &unnca__detection_service__descriptor);
-  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 1, (const ProtobufCMessage *)input, (ProtobufCClosure)closure, closure_data);
 }
 void unnca__detection_service__ping(ProtobufCService *service,
                                     const UNNCA__PingRequest *input,
@@ -962,7 +1129,7 @@ void unnca__detection_service__ping(ProtobufCService *service,
                                     void *closure_data)
 {
   assert(service->descriptor == &unnca__detection_service__descriptor);
-  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 2, (const ProtobufCMessage *)input, (ProtobufCClosure)closure, closure_data);
 }
 void unnca__detection_service__accelerator_info(ProtobufCService *service,
                                                 const UNNCA__AcceleratorInfoRequest *input,
@@ -970,12 +1137,12 @@ void unnca__detection_service__accelerator_info(ProtobufCService *service,
                                                 void *closure_data)
 {
   assert(service->descriptor == &unnca__detection_service__descriptor);
-  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 3, (const ProtobufCMessage *)input, (ProtobufCClosure)closure, closure_data);
 }
-void unnca__detection_service__init (UNNCA__DetectionService_Service *service,
-                                     UNNCA__DetectionService_ServiceDestroy destroy)
+void unnca__detection_service__init(UNNCA__DetectionService_Service *service,
+                                    UNNCA__DetectionService_ServiceDestroy destroy)
 {
-  protobuf_c_service_generated_init (&service->base,
-                                     &unnca__detection_service__descriptor,
-                                     (ProtobufCServiceDestroy) destroy);
+  protobuf_c_service_generated_init(&service->base,
+                                    &unnca__detection_service__descriptor,
+                                    (ProtobufCServiceDestroy)destroy);
 }
