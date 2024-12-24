@@ -10,7 +10,8 @@ int main()
     void *context = zmq_ctx_new();
     void *socket = zmq_socket(context, ZMQ_REQ);
     zmq_connect(socket, "tcp://localhost:5555");
-
+    int timeout = 1000; // 毫秒
+    zmq_setsockopt(socket, ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
     printf("Client connected to tcp://localhost:5555\n");
 
     // 创建并初始化 Request 消息

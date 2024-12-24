@@ -14,11 +14,11 @@ Detection__Response *process_request(const Detection__Request *request)
     // 假设检测到 2 个框
     response->box_count = 2;
     response->n_boxes = 2;
-    response->boxes = malloc(sizeof(Detection__Box *) * response->n_boxes);
+    response->boxes = (Detection__Box **)malloc(sizeof(Detection__Box *) * response->n_boxes);
 
     for (int i = 0; i < response->n_boxes; i++)
     {
-        response->boxes[i] = malloc(sizeof(Detection__Box));
+        response->boxes[i] = (Detection__Box *)malloc(sizeof(Detection__Box));
         detection__box__init(response->boxes[i]);
         response->boxes[i]->x = i * 10;
         response->boxes[i]->y = i * 20;
