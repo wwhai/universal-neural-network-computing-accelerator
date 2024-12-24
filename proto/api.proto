@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package detection;
+
+// 请求结构体定义
+message Request {
+    int32 width = 1;      // w
+    int32 height = 2;     // h
+    bytes data = 3;       // 指向的数据（例如图像数据）
+}
+
+// 单个检测框定义
+message Box {
+    int32 x = 1;          // 检测框的 x 坐标
+    int32 y = 2;          // 检测框的 y 坐标
+    int32 width = 3;      // 检测框的宽度
+    int32 height = 4;     // 检测框的高度
+    float confidence = 5; // 置信度 (prop)
+    string label = 6;     // 标签信息，最多 40 个字符
+}
+
+// 返回结构体定义
+message Response {
+    int32 box_count = 1;   // 检测到的框的数量
+    repeated Box boxes = 2; // 检测到的框列表，最多 20 个
+}
+
+// 定义服务接口
+service DetectionService {
+    rpc Detect(Request) returns (Response);
+}

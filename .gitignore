@@ -2,7 +2,8 @@
 /build/
 /server/build/
 /client/build/
-
+neural-accelerator-*
+*.pcap
 # 运行时文件
 *.o
 *.out

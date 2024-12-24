@@ -158,3 +158,59 @@ cd client/build
 2. 客户端使用 ZeroMQ 将图像数据发送至服务器。
 3. 服务器接收图像，使用 RV1106 上的 RKNN 进行目标检测，并返回结果。
 4. 客户端接收检测结果，并打印每个检测到的物体的位置、大小、置信度和标签信息。
+
+## 十一、protobuf-c安装
+要确认 `protobuf-c` 是否已经安装在您的系统上，可以使用以下几种方法：
+### 方法 1: 使用包管理器
+#### 对于基于 Debian 的系统（如 Ubuntu）：
+```sh
+sudo apt-get update
+dpkg -l | grep protobuf-c
+```
+如果 `protobuf-c` 已经安装，`dpkg -l` 命令的输出将包含与 `protobuf-c` 相关的行。
+#### 对于基于 Red Hat 的系统（如 CentOS）：
+```sh
+sudo yum list installed | grep protobuf-c
+```
+或者，如果使用 `dnf`：
+```sh
+sudo dnf list installed | grep protobuf-c
+```
+如果 `protobuf-c` 已经安装，上述命令的输出将包含与 `protobuf-c` 相关的行。
+### 方法 2: 使用 `find_package` 命令
+在 CMakeLists.txt 文件中，您可以使用 `find_package` 命令来查找 `protobuf-c`：
+```cmake
+find_package(Protobuf-C REQUIRED)
+if (Protobuf-C_FOUND)
+    message(STATUS "protobuf-c found")
+else()
+    message(FATAL_ERROR "protobuf-c not found")
+endif()
+```
+然后运行 `cmake`：
+```sh
+cmake .
+```
+如果 `protobuf-c` 已经安装并且可以被找到，CMake 将输出 "protobuf-c found"。
+### 方法 3: 查找库文件
+您也可以直接在文件系统中查找 `protobuf-c` 的库文件：
+```sh
+find /usr -name '*protobuf-c*'
+```
+或者如果您知道库文件的默认位置：
+```sh
+ls /usr/lib/x86_64-linux-gnu/libprotobuf-c.so
+```
+如果 `protobuf-c` 安装在系统上，上述命令应该返回库文件的路径。
+### 方法 4: 使用 `pkg-config`
+如果您的系统支持 `pkg-config`，您可以使用以下命令来检查 `protobuf-c` 是否安装：
+```sh
+pkg-config --exists protobuf-c
+```
+如果 `protobuf-c` 已安装，上述命令不会有任何输出。如果未安装，您将看到错误消息。
+### 方法 5: 查看版本
+您也可以使用 `pkg-config` 来查看已安装的 `protobuf-c` 版本：
+```sh
+pkg-config --modversion protobuf-c
+```
+如果 `protobuf-c` 已安装，这将返回安装的版本号。如果未安装，您将看到错误消息。
