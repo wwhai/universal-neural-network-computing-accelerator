@@ -13,3 +13,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#ifndef UTILS_H
+#define UTILS_H
+#include <stdio.h>
+#include <stdint.h>
+
+void dump_hex_string(const uint8_t *str, int len);
+#endif

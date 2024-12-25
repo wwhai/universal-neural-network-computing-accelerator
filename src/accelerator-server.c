@@ -3,8 +3,44 @@
 #include <stdlib.h>
 #include <string.h>
 #include "clog.h"
+#include "utils.h"
 #include "api.pb-c.h"
-// 处理认证请求的函数
+
+void handle_getinfo_request(void *socket, const UNNCA__AcceleratorInfoRequest *request)
+{
+    UNNCA__AcceleratorInfoResponse accelerator_info_response = UNNCA__ACCELERATOR_INFO_RESPONSE__INIT;
+    accelerator_info_response.uuid = strdup("1000000000000000");
+    accelerator_info_response.name = strdup("neural-network-computing-accelerator");
+    accelerator_info_response.version = strdup("v0.0.1");
+    accelerator_info_response.vendor = strdup("www.hootrhino.com");
+    accelerator_info_response.model = strdup("UNNCA-RK3568");
+    UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
+    rpc_response.accelerator_info_response = &accelerator_info_response;
+    rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_ACCELERATOR_INFO_RESPONSE;
+    size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
+    uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
+    unnca__rpc_response__pack(&rpc_response, response_buffer);
+    zmq_send(socket, response_buffer, rpc_response_size, 0);
+    free(response_buffer);
+    free(accelerator_info_response.version);
+    free(accelerator_info_response.vendor);
+    free(accelerator_info_response.model);
+    free(accelerator_info_response.name);
+    free(accelerator_info_response.uuid);
+}
+void handle_ping_request(void *socket, const UNNCA__PingRequest *request)
+{
+    UNNCA__PingResponse ping_response = UNNCA__PING_RESPONSE__INIT;
+    ping_response.status = 0;
+    UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
+    rpc_response.ping_response = &ping_response;
+    rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_PING_RESPONSE;
+    size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
+    uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
+    unnca__rpc_response__pack(&rpc_response, response_buffer);
+    zmq_send(socket, response_buffer, rpc_response_size, 0);
+    free(response_buffer);
+}
 void handle_auth_request(void *socket, const UNNCA__AuthRequest *request)
 {
     UNNCA__AuthResponse auth_response = UNNCA__AUTH_RESPONSE__INIT;
@@ -20,7 +56,7 @@ void handle_auth_request(void *socket, const UNNCA__AuthRequest *request)
     free(response_buffer);
 }
 // 模拟服务端逻辑：处理 Request 并返回 Response
-void process_request(void *socket, const UNNCA__DetectRequest *request)
+void handle_detect_request(void *socket, const UNNCA__DetectRequest *request)
 {
     UNNCA__DetectResponse detect_response = UNNCA__DETECT_RESPONSE__INIT;
     unnca__detect_response__init(&detect_response);
@@ -77,14 +113,8 @@ int main()
             zmq_msg_close(&received_msg);
             break;
         }
-        fprintf(stderr, "Received %d bytes\n", bytes_received);
         const uint8_t *data = (const uint8_t *)zmq_msg_data(&received_msg);
-        fprintf(stderr, "Received data: ");
-        for (int i = 0; i < bytes_received; i++)
-        {
-            fprintf(stderr, "%02x ", data[i]);
-        }
-        fprintf(stderr, "\n");
+        dump_hex_string(data, bytes_received);
         UNNCA__RpcRequest *request = unnca__rpc_request__unpack(NULL, bytes_received, data);
         if (!request)
         {
@@ -99,12 +129,15 @@ int main()
             break;
         case UNNCA__RPC_REQUEST__REQUEST_PING_REQUEST:
             printf("Ping request received\n");
+            handle_ping_request(socket, request->ping_request);
             break;
         case UNNCA__RPC_REQUEST__REQUEST_DETECT_REQUEST:
             printf("Detect request received\n");
+            handle_detect_request(socket, request->detect_request);
             break;
         case UNNCA__RPC_REQUEST__REQUEST_ACCELERATOR_INFO_REQUEST:
             printf("AcceleratorInfo request received\n");
+            handle_getinfo_request(socket, request->accelerator_info_request);
             break;
         case UNNCA__RPC_REQUEST__REQUEST__NOT_SET:
             printf("Request not set\n");
@@ -119,4 +152,14 @@ int main()
     zmq_close(socket);
     zmq_ctx_destroy(context);
     return 0;
+}
+// 单独起来一个检查线程检查客户端的心跳状态:每次有AUTH数据包进来以后，通过校验，将当前这个UUID记录下来，每次心跳刷新倒计时。当倒计时==0的时候标记某个客户端离线。
+void *check_client_heartbeat(void *arg)
+{
+    while (1)
+    {
+
+
+    }
+
 }

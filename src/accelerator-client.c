@@ -2,8 +2,74 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+#include "utils.h"
 #include "api.pb-c.h"
+#define HEARTBEAT_INTERVAL 5000 // 心跳间隔，单位：毫秒
+#define HEARTBEAT_TIMEOUT 10000 // 心跳超时时间，单位：毫秒
 
+typedef enum
+{
+    UNAUTHORIZED,
+    AUTH_SUCCESS,
+    AUTH_FAILED,
+    CONNECTED,
+    DISCONNECTED,
+    ERROR,
+    EXIT,
+} Status;
+typedef struct
+{
+    void *zmq_context;
+    void *zmq_socket;
+    char uuid[40];
+    uint32_t timeout;
+    pthread_t heartbeat_thread;
+    int heartbeat_running;
+} Client;
+void *heartbeat_thread_func(void *arg)
+{
+    Client *client = (Client *)arg;
+    while (client->heartbeat_running)
+    {
+        zmq_send(client->zmq_socket, "PING", 4, 0);
+        zmq_pollitem_t items[] = {
+            {client->zmq_socket, 0, ZMQ_POLLIN, 0}};
+        int rc = zmq_poll(items, 1, client->timeout);
+        if (rc == -1)
+        {
+            // 错误处理
+            break;
+        }
+        else if (rc == 0)
+        {
+            printf("Heartbeat timeout, server may be offline\n");
+            break;
+        }
+        else
+        {
+            char buffer[4];
+            zmq_recv(client->zmq_socket, buffer, 4, 0);
+            if (strcmp(buffer, "PONG") == 0)
+            {
+                printf("Received PONG from server\n");
+            }
+            else
+            {
+                printf("Received unknown message: %s\n", buffer);
+            }
+        }
+        usleep(HEARTBEAT_INTERVAL * 1000);
+    }
+    client->heartbeat_running = 0;
+    return NULL;
+}
+void start_heartbeat_thread(Client *client)
+{
+    client->heartbeat_running = 1;
+    pthread_create(&client->heartbeat_thread, NULL, heartbeat_thread_func, client);
+}
 // 初始化 ZMQ 上下文和客户端 socket
 void *init_client(void)
 {
@@ -15,91 +81,68 @@ void *init_client(void)
     printf("Client connected to tcp://localhost:5555\n");
     return socket;
 }
-void send_detect_request(void *socket, const char *uuid)
+void send_detect_request(void *socket)
 {
-
-    UNNCA__DetectRequest request = UNNCA__DETECT_REQUEST__INIT;
-    request.width = 1920;
-    request.height = 1080;
-    request.data.data = (uint8_t *)"1234567890";
+    UNNCA__DetectRequest detect_request = UNNCA__DETECT_REQUEST__INIT;
+    detect_request.width = 1920;
+    detect_request.height = 1080;
+    detect_request.data.data = (uint8_t *)"\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF";
     UNNCA__RpcRequest rpc_request = UNNCA__RPC_REQUEST__INIT;
-    rpc_request.detect_request = &request;
+    rpc_request.detect_request = &detect_request;
     rpc_request.request_case = UNNCA__RPC_REQUEST__REQUEST_DETECT_REQUEST;
     size_t rpc_request_size = unnca__rpc_request__get_packed_size(&rpc_request);
     uint8_t *request_buffer = (uint8_t *)malloc(rpc_request_size);
     unnca__rpc_request__pack(&rpc_request, request_buffer);
+    dump_hex_string((const uint8_t *)request_buffer, rpc_request_size);
     zmq_send(socket, request_buffer, rpc_request_size, 0);
-    printf("zmq_send bytes: ");
-    for (size_t i = 0; i < rpc_request_size; i++)
-    {
-        printf("%02x ", request_buffer[i]);
-    }
-    printf("\n");
     free(request_buffer);
 }
 // 发送 Auth 请求
 void send_auth_request(void *socket, const char *uuid)
 {
-    static uint8_t request_buffer[1024]; // 假设最大请求大小为1024字节
     static size_t rpc_request_size = 0;
-
     UNNCA__AuthRequest auth_request = UNNCA__AUTH_REQUEST__INIT;
     auth_request.uuid = (char *)uuid;
     UNNCA__RpcRequest rpc_request = UNNCA__RPC_REQUEST__INIT;
     rpc_request.auth_request = &auth_request;
     rpc_request.request_case = UNNCA__RPC_REQUEST__REQUEST_AUTH_REQUEST;
-
     rpc_request_size = unnca__rpc_request__get_packed_size(&rpc_request);
-    if (rpc_request_size > sizeof(request_buffer))
-    {
-        fprintf(stderr, "Error: RPC request size exceeds buffer size\n");
-        return;
-    }
-
+    uint8_t *request_buffer = (uint8_t *)malloc(rpc_request_size);
     unnca__rpc_request__pack(&rpc_request, request_buffer);
+    dump_hex_string((const uint8_t *)request_buffer, rpc_request_size);
     zmq_send(socket, request_buffer, rpc_request_size, 0);
-    printf("zmq_send bytes: ");
-    for (size_t i = 0; i < rpc_request_size; i++)
-    {
-        printf("%02x ", request_buffer[i]);
-    }
-    printf("\n");
-}
-
-// 发送 Detect 请求
-void send_detect_request(void *socket, int width, int height, const uint8_t *data, size_t data_len)
-{
-    UNNCA__DetectRequest request = UNNCA__DETECT_REQUEST__INIT;
-    request.width = width;
-    request.height = height;
-    request.data.data = (uint8_t *)data;
-    request.data.len = data_len;
-    size_t request_size = unnca__detect_request__get_packed_size(&request);
-    uint8_t *request_buffer = (uint8_t *)malloc(request_size);
-    unnca__detect_request__pack(&request, request_buffer);
-    zmq_send(socket, request_buffer, request_size, 0);
     free(request_buffer);
 }
 
 // 发送 Ping 请求
 void send_ping_request(void *socket)
 {
-    UNNCA__PingRequest request = UNNCA__PING_REQUEST__INIT;
-    size_t request_size = unnca__ping_request__get_packed_size(&request);
-    uint8_t *request_buffer = (uint8_t *)malloc(request_size);
-    unnca__ping_request__pack(&request, request_buffer);
-    zmq_send(socket, request_buffer, request_size, 0);
+    static size_t rpc_request_size = 0;
+    UNNCA__PingRequest ping_request = UNNCA__PING_REQUEST__INIT;
+    UNNCA__RpcRequest rpc_request = UNNCA__RPC_REQUEST__INIT;
+    rpc_request.ping_request = &ping_request;
+    rpc_request.request_case = UNNCA__RPC_REQUEST__REQUEST_PING_REQUEST;
+    rpc_request_size = unnca__rpc_request__get_packed_size(&rpc_request);
+    uint8_t *request_buffer = (uint8_t *)malloc(rpc_request_size);
+    unnca__rpc_request__pack(&rpc_request, request_buffer);
+    dump_hex_string((const uint8_t *)request_buffer, rpc_request_size);
+    zmq_send(socket, request_buffer, rpc_request_size, 0);
     free(request_buffer);
 }
 
 // 发送 AcceleratorInfo 请求
 void send_accelerator_info_request(void *socket)
 {
-    UNNCA__AcceleratorInfoRequest request = UNNCA__ACCELERATOR_INFO_REQUEST__INIT;
-    size_t request_size = unnca__accelerator_info_request__get_packed_size(&request);
-    uint8_t *request_buffer = (uint8_t *)malloc(request_size);
-    unnca__accelerator_info_request__pack(&request, request_buffer);
-    zmq_send(socket, request_buffer, request_size, 0);
+    static size_t rpc_request_size = 0;
+    UNNCA__AcceleratorInfoRequest accelerator_info_request = UNNCA__ACCELERATOR_INFO_REQUEST__INIT;
+    UNNCA__RpcRequest rpc_request = UNNCA__RPC_REQUEST__INIT;
+    rpc_request.accelerator_info_request = &accelerator_info_request;
+    rpc_request.request_case = UNNCA__RPC_REQUEST__REQUEST_ACCELERATOR_INFO_REQUEST;
+    rpc_request_size = unnca__rpc_request__get_packed_size(&rpc_request);
+    uint8_t *request_buffer = (uint8_t *)malloc(rpc_request_size);
+    unnca__rpc_request__pack(&rpc_request, request_buffer);
+    dump_hex_string((const uint8_t *)request_buffer, rpc_request_size);
+    zmq_send(socket, request_buffer, rpc_request_size, 0);
     free(request_buffer);
 }
 
@@ -163,18 +206,14 @@ void parse_accelerator_info_response(UNNCA__AcceleratorInfoResponse *response)
 {
     if (response)
     {
-        printf("AcceleratorInfo Response: name=%s, version=%s\n", response->name, response->version);
+        printf("AcceleratorInfo Response: uuid=%s, vendor=%s, model=%s, name=%s, version=%s\n",
+               response->uuid, response->vendor, response->model, response->name, response->version);
     }
 }
-
-int main()
+void process_response(UNNCA__RpcResponse *response)
 {
-    void *socket = init_client();
-    send_auth_request(socket, "1234567890AAAAAA");
-    UNNCA__RpcResponse *response = receive_response(socket);
     if (response)
     {
-
         switch (response->response_case)
         {
         case UNNCA__RPC_RESPONSE__RESPONSE_AUTH_RESPONSE:
@@ -182,18 +221,68 @@ int main()
             free_response(response);
             break;
         case UNNCA__RPC_RESPONSE__RESPONSE_PING_RESPONSE:
+            parse_ping_response(response->ping_response);
+            free_response(response);
             break;
         case UNNCA__RPC_RESPONSE__RESPONSE_DETECT_RESPONSE:
+            parse_detect_response(response->detect_response);
+            free_response(response);
             break;
         case UNNCA__RPC_RESPONSE__RESPONSE_ACCELERATOR_INFO_RESPONSE:
+            parse_accelerator_info_response(response->accelerator_info_response);
+            free_response(response);
             break;
         case UNNCA__RPC_RESPONSE__RESPONSE__NOT_SET:
+            printf("Response not set\n");
+            free_response(response);
             break;
         default:
             printf("Unknown request received, request->request_case: %d\n", response->response_case);
+            free_response(response);
             break;
         }
     }
+}
+// 启动一个线程，每隔3秒发送一次ping
+void *send_ping_thread(void *arg)
+{
+    void *socket = arg;
+    while (1)
+    {
+        send_ping_request(socket);
+        UNNCA__RpcResponse *response = receive_response(socket);
+        process_response(response);
+        sleep(3);
+    }
+    return NULL;
+}
+int main()
+{
+    void *socket = init_client();
+    {
+        send_auth_request(socket, "1234567890AAAAAA");
+        UNNCA__RpcResponse *response = receive_response(socket);
+        process_response(response);
+    }
+    {
+        send_ping_request(socket);
+        UNNCA__RpcResponse *response = receive_response(socket);
+        process_response(response);
+    }
+    {
+        send_accelerator_info_request(socket);
+        UNNCA__RpcResponse *response = receive_response(socket);
+        process_response(response);
+    }
+    {
+        send_detect_request(socket);
+        UNNCA__RpcResponse *response = receive_response(socket);
+        process_response(response);
+    }
+    pthread_t ping_thread;
+    pthread_create(&ping_thread, NULL, send_ping_thread, socket);
+    pthread_detach(ping_thread);
+    sleep(20);
     zmq_close(socket);
     zmq_ctx_destroy(socket);
 
