@@ -25,11 +25,11 @@
 #include "api.pb-c.h"
 
 void start_server(void *context, void *socket);
-void handle_getinfo_request(void *socket, const UNNCA__AcceleratorInfoRequest *request);
-void handle_ping_request(void *socket, const UNNCA__PingRequest *request);
-void handle_auth_request(void *socket, const UNNCA__AuthRequest *request);
-void handle_detect_request(void *socket, const UNNCA__DetectRequest *request);
-void report_error(void *socket, const char *error_msg);
+void handle_getinfo_request(void *socket, zmq_msg_t identity, const UNNCA__AcceleratorInfoRequest *request);
+void handle_ping_request(void *socket, zmq_msg_t identity, const UNNCA__PingRequest *request);
+void handle_auth_request(void *socket, zmq_msg_t identity, const UNNCA__AuthRequest *request);
+void handle_detect_request(void *socket, zmq_msg_t identity, const UNNCA__DetectRequest *request);
+void report_error(void *socket, zmq_msg_t identity, const char *error_msg);
 void stop_server(void *context, void *socket);
 
 #endif // SERVER_H

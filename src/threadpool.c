@@ -31,33 +31,7 @@ void *worker_thread(void *arg)
         }
         DataPackage package = pool->task_queue[--pool->task_count];
         pthread_mutex_unlock(&pool->queue_mutex);
-        switch (package.request->request_case)
-        {
-        case UNNCA__RPC_REQUEST__REQUEST_AUTH_REQUEST:
-            printf("Auth request: uuid=%s\n", package.request->auth_request->uuid);
-            handle_auth_request(package.socket, package.request->auth_request);
-            break;
-        case UNNCA__RPC_REQUEST__REQUEST_PING_REQUEST:
-            handle_ping_request(package.socket, package.request->ping_request);
-            printf("Ping request received\n");
-            break;
-        case UNNCA__RPC_REQUEST__REQUEST_DETECT_REQUEST:
-            printf("Detect request received\n");
-            handle_detect_request(package.socket, package.request->detect_request);
-            break;
-        case UNNCA__RPC_REQUEST__REQUEST_ACCELERATOR_INFO_REQUEST:
-            printf("AcceleratorInfo request received\n");
-            handle_getinfo_request(package.socket, package.request->accelerator_info_request);
-            break;
-        case UNNCA__RPC_REQUEST__REQUEST__NOT_SET:
-            printf("Request not set\n");
-            report_error(package.socket, "Unknown request");
-            break;
-        default:
-            printf("Unknown request received, request->request_case: %d\n", package.request->request_case);
-            report_error(package.socket, "Unknown request");
-            break;
-        }
+
         unnca__rpc_request__free_unpacked(package.request, NULL);
     }
     return NULL;
@@ -83,14 +57,18 @@ void threadpool_init(ThreadPool *pool)
 void threadpool_add_task(ThreadPool *pool, void *socket, UNNCA__RpcRequest *request)
 {
     pthread_mutex_lock(&pool->queue_mutex);
-    if (pool->task_count < MAX_CLIENTS)
+    if (pool->task_count >= MAX_CLIENTS)
+    {
+        printf("Task queue is full, dropping the request.\n");
+    }
+    else
     {
         pool->task_queue[pool->task_count].socket = socket;
         pool->task_queue[pool->task_count].request = request;
         pool->task_count++;
         pthread_cond_signal(&pool->queue_cond);
+        pthread_mutex_unlock(&pool->queue_mutex);
     }
-    pthread_mutex_unlock(&pool->queue_mutex);
 }
 
 // 销毁线程池

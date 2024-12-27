@@ -26,39 +26,43 @@ void stop_server(void *context, void *socket)
     zmq_close(socket);
     zmq_ctx_destroy(context);
 }
-void handle_getinfo_request(void *socket, const UNNCA__AcceleratorInfoRequest *request)
+void handle_getinfo_request(void *socket, zmq_msg_t identity, const UNNCA__AcceleratorInfoRequest *request)
 {
     UNNCA__AcceleratorInfoResponse accelerator_info_response = UNNCA__ACCELERATOR_INFO_RESPONSE__INIT;
-    accelerator_info_response.uuid = UUID;
-    accelerator_info_response.name = NAME;
-    accelerator_info_response.version = VERSION;
-    accelerator_info_response.vendor = VENDOR;
-    accelerator_info_response.model = MODEL;
+    accelerator_info_response.uuid = (char *)UUID;
+    accelerator_info_response.name = (char *)NAME;
+    accelerator_info_response.version = (char *)VERSION;
+    accelerator_info_response.vendor = (char *)VENDOR;
+    accelerator_info_response.model = (char *)MODEL;
     UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
     rpc_response.accelerator_info_response = &accelerator_info_response;
     rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_ACCELERATOR_INFO_RESPONSE;
     size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
     uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
     unnca__rpc_response__pack(&rpc_response, response_buffer);
+    char *sender_id = (char *)zmq_msg_data(&identity);
+    zmq_send(socket, sender_id, strlen(sender_id), ZMQ_SNDMORE);
     zmq_send(socket, response_buffer, rpc_response_size, 0);
     free(response_buffer);
 }
 
-void handle_ping_request(void *socket, const UNNCA__PingRequest *request)
+void handle_ping_request(void *socket, zmq_msg_t identity, const UNNCA__PingRequest *request)
 {
     UNNCA__PingResponse ping_response = UNNCA__PING_RESPONSE__INIT;
-    ping_response.status = 0;
+    ping_response.status = 100;
     UNNCA__RpcResponse rpc_response = UNNCA__RPC_RESPONSE__INIT;
     rpc_response.ping_response = &ping_response;
     rpc_response.response_case = UNNCA__RPC_RESPONSE__RESPONSE_PING_RESPONSE;
     size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
     uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
     unnca__rpc_response__pack(&rpc_response, response_buffer);
+    char *sender_id = (char *)zmq_msg_data(&identity);
+    zmq_send(socket, sender_id, strlen(sender_id), ZMQ_SNDMORE);
     zmq_send(socket, response_buffer, rpc_response_size, 0);
     free(response_buffer);
 }
 
-void handle_auth_request(void *socket, const UNNCA__AuthRequest *request)
+void handle_auth_request(void *socket, zmq_msg_t identity, const UNNCA__AuthRequest *request)
 {
     UNNCA__AuthResponse auth_response = UNNCA__AUTH_RESPONSE__INIT;
     auth_response.code = 0;
@@ -69,11 +73,13 @@ void handle_auth_request(void *socket, const UNNCA__AuthRequest *request)
     size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
     uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
     unnca__rpc_response__pack(&rpc_response, response_buffer);
+    char *sender_id = (char *)zmq_msg_data(&identity);
+    zmq_send(socket, sender_id, strlen(sender_id), ZMQ_SNDMORE);
     zmq_send(socket, response_buffer, rpc_response_size, 0);
     free(response_buffer);
 }
 
-void handle_detect_request(void *socket, const UNNCA__DetectRequest *request)
+void handle_detect_request(void *socket, zmq_msg_t identity, const UNNCA__DetectRequest *request)
 {
     UNNCA__DetectResponse detect_response = UNNCA__DETECT_RESPONSE__INIT;
     unnca__detect_response__init(&detect_response);
@@ -101,8 +107,9 @@ void handle_detect_request(void *socket, const UNNCA__DetectRequest *request)
     size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
     uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
     unnca__rpc_response__pack(&rpc_response, response_buffer);
+    char *sender_id = (char *)zmq_msg_data(&identity);
+    zmq_send(socket, sender_id, strlen(sender_id), ZMQ_SNDMORE);
     zmq_send(socket, response_buffer, rpc_response_size, 0);
-
     // 释放资源
     for (int i = 0; i < detect_response.n_boxes; i++)
     {
@@ -113,8 +120,9 @@ void handle_detect_request(void *socket, const UNNCA__DetectRequest *request)
     free(response_buffer);
 }
 // 实现错误报告函数
-void report_error(void *socket, const char *error_msg)
+void report_error(void *socket, zmq_msg_t identity, const char *error_msg)
 {
+    log_error(error_msg);
     UNNCA__ErrorResponse error_response = UNNCA__ERROR_RESPONSE__INIT;
     error_response.code = 0;
     error_response.msg = (char *)error_msg;
@@ -124,6 +132,8 @@ void report_error(void *socket, const char *error_msg)
     size_t rpc_response_size = unnca__rpc_response__get_packed_size(&rpc_response);
     uint8_t *response_buffer = (uint8_t *)malloc(rpc_response_size);
     unnca__rpc_response__pack(&rpc_response, response_buffer);
+    char *sender_id = (char *)zmq_msg_data(&identity);
+    zmq_send(socket, sender_id, strlen(sender_id), ZMQ_SNDMORE);
     zmq_send(socket, response_buffer, rpc_response_size, 0);
     free(response_buffer);
 }

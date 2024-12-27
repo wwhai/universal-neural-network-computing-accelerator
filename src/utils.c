@@ -14,7 +14,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "utils.h"
-
+#include "clog.h"
 /**
  * @brief 打印十六进制字符串
  * @param str 要打印的字符串
@@ -24,10 +24,10 @@ void dump_hex_string(const uint8_t *str, int len)
 {
     if (str == NULL || len <= 0)
     {
-        printf("Invalid input parameters\n");
+        log_error("dump_hex_string: Invalid input parameters\n");
         return;
     }
-    printf("== == Dump (%d) bytes to hex: [", len);
+    printf("== == == Dump (%d) bytes to hex: [", len);
     for (int i = 0; i < len; i++)
     {
         printf("%02x ", (unsigned char)str[i]);
