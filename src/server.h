@@ -12,13 +12,24 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#ifndef CONFIG_H
-#define CONFIG_H
 
-#define UUID "1000000000000000"
-#define NAME "neural-network-computing-accelerator"
-#define VERSION "v0.0.1"
-#define VENDOR "www.hootrhino.com"
-#define MODEL "UNNCA-RK3568"
+#ifndef SERVER_H
+#define SERVER_H
 
-#endif // CONFIG_H
+#include <zmq.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include "clog.h"
+#include "utils.h"
+#include "api.pb-c.h"
+
+void start_server(void *context, void *socket);
+void handle_getinfo_request(void *socket, const UNNCA__AcceleratorInfoRequest *request);
+void handle_ping_request(void *socket, const UNNCA__PingRequest *request);
+void handle_auth_request(void *socket, const UNNCA__AuthRequest *request);
+void handle_detect_request(void *socket, const UNNCA__DetectRequest *request);
+void report_error(void *socket, const char *error_msg);
+void stop_server(void *context, void *socket);
+
+#endif // SERVER_H

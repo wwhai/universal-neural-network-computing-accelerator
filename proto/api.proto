@@ -51,6 +51,7 @@ message PingResponse  {
 // 获取设备信息
 message AcceleratorInfoRequest {
 }
+
 // 获取设备信息返回
 message AcceleratorInfoResponse {
     string version = 1;// 版本号
@@ -68,12 +69,22 @@ message RpcRequest {
         AcceleratorInfoRequest accelerator_info_request = 4;
     }
 }
+// 错误信息
+message ErrorRequest  {
+}
+// 错误信息
+message ErrorResponse  {
+    int32 code = 1;  // 状态码
+    string msg = 2; // 设备唯一标识
+}
+// 通用的消息
 message RpcResponse {
     oneof response {
         AuthResponse auth_response = 1;
         PingResponse ping_response = 2;
         DetectResponse detect_response = 3;
         AcceleratorInfoResponse accelerator_info_response = 4;
+        ErrorResponse error_response = 5;
     }
 }
 
@@ -85,6 +96,8 @@ service DetectionService {
     rpc Detect(DetectRequest) returns (DetectResponse);
     // 心跳接口
     rpc Ping(PingRequest) returns (PingResponse);
+    // 错误信息
+    rpc Error(ErrorRequest) returns (ErrorResponse);
     // 获取设备信息
     rpc AcceleratorInfo(AcceleratorInfoRequest) returns (AcceleratorInfoResponse);
 }

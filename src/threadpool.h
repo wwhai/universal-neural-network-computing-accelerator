@@ -12,13 +12,36 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef THREADPOOL_H
+#define THREADPOOL_H
 
-#define UUID "1000000000000000"
-#define NAME "neural-network-computing-accelerator"
-#define VERSION "v0.0.1"
-#define VENDOR "www.hootrhino.com"
-#define MODEL "UNNCA-RK3568"
+#include <pthread.h>
+#include <zmq.h>
+#include "api.pb-c.h"
 
-#endif // CONFIG_H
+#define MAX_CLIENTS 10
+#define THREAD_POOL_SIZE 5
+
+typedef struct
+{
+    void *socket;
+    UNNCA__RpcRequest *request;
+} DataPackage;
+
+typedef struct
+{
+    DataPackage task_queue[MAX_CLIENTS];
+    int task_count;
+    pthread_mutex_t queue_mutex;
+    pthread_cond_t queue_cond;
+    pthread_t threads[THREAD_POOL_SIZE];
+} ThreadPool;
+
+// 初始化线程池
+void threadpool_init(ThreadPool *pool);
+// 向线程池添加任务
+void threadpool_add_task(ThreadPool *pool, void *socket, UNNCA__RpcRequest *request);
+// 销毁线程池
+void threadpool_destroy(ThreadPool *pool);
+
+#endif // THREADPOOL_H

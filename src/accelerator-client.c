@@ -282,7 +282,7 @@ int main()
     pthread_t ping_thread;
     pthread_create(&ping_thread, NULL, send_ping_thread, socket);
     pthread_detach(ping_thread);
-    sleep(20);
+    sleep(10);
     zmq_close(socket);
     zmq_ctx_destroy(socket);
 
